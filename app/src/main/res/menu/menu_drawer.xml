@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single"
+        >
+        <item android:title="Apply Now" android:id="@+id/applynow" android:icon="@drawable/baseline_touch_app_24" />
+        <item android:title="Contact Us" android:id="@+id/contactus" android:icon="@drawable/baseline_call_24" />
+        <item android:title="About Us" android:id="@+id/aboutus" android:icon="@drawable/baseline_info_24"/>
+        <item android:title="Rate Us" android:id="@+id/rateus" android:icon="@drawable/baseline_star_rate_24"/>
+        <item android:title="Share App" android:id="@+id/share" android:icon="@drawable/baseline_share_24"/>
+        <item android:title="Log Out" android:id="@+id/logout" android:icon="@drawable/baseline_logout_24"/>
+
+    </group>
+
+
+</menu>
