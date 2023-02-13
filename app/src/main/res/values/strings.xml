@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">EnjayInterviewApp</string>
+
+    <string name="client_ID">1082028555812-nr55tj27bkpkana463so3am10oiippd0.apps.googleusercontent.com</string>
+
+    <string name="facebook_app_id">498821489001387</string>
+    <string name="fb_login_protocol_scheme">fb498821489001387</string>
+    <string name="facebook_client_token">8e2ccf4a032072fe9af6d5e6b539ce07</string>
 </resources>
