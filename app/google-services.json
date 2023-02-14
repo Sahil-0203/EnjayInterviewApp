@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "464487550920",
+    "project_id": "enjayinterviewapp-2e716",
+    "storage_bucket": "enjayinterviewapp-2e716.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:464487550920:android:4dea6270d17209946cfafd",
+        "android_client_info": {
+          "package_name": "com.example.enjayinterviewapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "464487550920-gfo241ag6sfghjh9dmkacrkhf8bt86fm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.enjayinterviewapp",
+            "certificate_hash": "9a2827d0af8cc5b8a57ddcef440c6b41e544815f"
+          }
+        },
+        {
+          "client_id": "464487550920-15oebpan5hh7kg721fus0muqvu8qvraj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0WYMgIU9UptAvtNk5qbKC7cU1vwedmtk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "464487550920-15oebpan5hh7kg721fus0muqvu8qvraj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -13,18 +13,30 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EnjayInterviewApp"
         tools:targetApi="31">
-        <activity android:name=".CplusQuestion"
-            android:exported="false"/>
-        <activity android:name=".CQuestion"
-            android:exported="false"/>
-        <activity android:name=".KotlinQuestion"
-            android:exported="false"/>
-        <activity android:name=".PhpQuestion"
-            android:exported="false"/>
-        <activity android:name=".PythonQuestion"
-            android:exported="false"/>
-        <activity android:name=".Result_Activity"
-            android:exported="false"/>
+        <activity
+            android:name=".AboutUS"
+            android:exported="false" />
+        <activity
+            android:name=".Update_Firebase"
+            android:exported="false" />
+        <activity
+            android:name=".CplusQuestion"
+            android:exported="false" />
+        <activity
+            android:name=".CQuestion"
+            android:exported="false" />
+        <activity
+            android:name=".KotlinQuestion"
+            android:exported="false" />
+        <activity
+            android:name=".PhpQuestion"
+            android:exported="false" />
+        <activity
+            android:name=".PythonQuestion"
+            android:exported="false" />
+        <activity
+            android:name=".Result_Activity"
+            android:exported="false" />
         <activity
             android:name=".JavaQuestion"
             android:exported="false" />

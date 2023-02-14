@@ -3,17 +3,15 @@ package com.example.enjayinterviewapp
 import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.enjayinterviewapp.databinding.ActivityRegisterPageBinding
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.ktx.Firebase
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -31,7 +29,7 @@ class Register_page : AppCompatActivity() {
 
         // Initialize Firebase Auth-----------------------------------------------------------------
 
-        auth = Firebase.auth
+        auth = FirebaseAuth.getInstance()
 
 
         binding.Login.setOnClickListener {
@@ -103,14 +101,17 @@ class Register_page : AppCompatActivity() {
             val Password=binding.PassEdittxt.text.toString()
             auth.createUserWithEmailAndPassword(Email,Password).addOnCompleteListener{
                 if (it.isSuccessful){
+                    val uid= auth.currentUser?.uid
 
                     database= FirebaseDatabase.getInstance().getReference("Users")
-                    val User=User(FName,Mobile,Email,Date,Password)
-                    database.child(FName).setValue(User).addOnSuccessListener {
+                    val User=User(FName,Mobile,Email,Date)
+                    if (uid != null) {
+                        database.child(uid).setValue(User).addOnSuccessListener {
 
-                        Toast.makeText(this,"SuccessFully Saved", Toast.LENGTH_SHORT).show()
-                    }.addOnFailureListener{
-                        Toast.makeText(this,"Failed", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this,"SuccessFully Saved", Toast.LENGTH_SHORT).show()
+                        }.addOnFailureListener{
+                            Toast.makeText(this,"Failed", Toast.LENGTH_SHORT).show()
+                        }
                     }
                 }
             }

@@ -7,8 +7,6 @@ import android.os.Handler
 import android.view.Window
 import android.view.WindowManager
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.auth.ktx.oAuthCredential
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.ktx.Firebase
 
@@ -21,7 +19,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-        auth=Firebase.auth
         Handler().postDelayed(
             {
 

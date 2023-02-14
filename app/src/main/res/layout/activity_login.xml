@@ -114,44 +114,44 @@
         </LinearLayout>
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/LogWith"
-            android:text="Login With"
-            android:layout_below="@+id/abc"
-            android:layout_marginTop="10dp"
-            android:layout_centerHorizontal="true"
-            android:textColor="@color/black"/>
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:id="@+id/LogWith"-->
+<!--            android:text="Login With"-->
+<!--            android:layout_below="@+id/abc"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:textColor="@color/black"/>-->
 
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/LogWith"
-            android:layout_marginTop="10dp"
-            android:layout_centerHorizontal="true"
-            android:orientation="horizontal">
+<!--        <LinearLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@+id/LogWith"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:orientation="horizontal">-->
 
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:id="@+id/googleimg"
-                android:layout_below="@+id/LogWith"
-                android:layout_marginHorizontal="20dp"
-                android:src="@drawable/google" />
-
-
-            <ImageView
-                android:id="@+id/facebookimg"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_below="@+id/LogWith"
-                android:layout_marginHorizontal="20dp"
-                android:src="@drawable/facebook" />
+<!--            <ImageView-->
+<!--                android:layout_width="30dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:id="@+id/googleimg"-->
+<!--                android:layout_below="@+id/LogWith"-->
+<!--                android:layout_marginHorizontal="20dp"-->
+<!--                android:src="@drawable/google" />-->
 
 
-        </LinearLayout>
+<!--            <ImageView-->
+<!--                android:id="@+id/facebookimg"-->
+<!--                android:layout_width="30dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:layout_below="@+id/LogWith"-->
+<!--                android:layout_marginHorizontal="20dp"-->
+<!--                android:src="@drawable/facebook" />-->
+
+
+<!--        </LinearLayout>-->
 
     </RelativeLayout>
 

@@ -11,27 +11,30 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         >
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/profileimage"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:src="@drawable/profileimg"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="30dp"
-                />
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Update Profile"
+           android:textColor="@color/white"
+           android:textStyle="bold"
+           android:layout_gravity="center_horizontal"
+           android:textSize="30dp"
+           android:layout_marginTop="30dp"
+           />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Name:"
             android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="20dp"
             android:textColor="@color/white"
             android:textStyle="bold"
             android:textSize="20dp"/>
 
 
-        <TextView
-            android:id="@+id/nameTextview"
+        <EditText
+            android:id="@+id/nameText"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/textview_design"
@@ -55,8 +58,8 @@
             android:textSize="20dp"/>
 
 
-        <TextView
-            android:id="@+id/contactTextview"
+        <EditText
+            android:id="@+id/contactText"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/textview_design"
@@ -78,8 +81,8 @@
             android:textColor="@color/white"
             android:textStyle="bold"
             android:textSize="20dp"/>
-        <TextView
-            android:id="@+id/emailTextview"
+        <EditText
+            android:id="@+id/emailText"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/textview_design"
@@ -102,8 +105,8 @@
             android:textStyle="bold"
             android:textSize="20dp"/>
 
-        <TextView
-            android:id="@+id/dobTextview"
+        <EditText
+            android:id="@+id/dobText"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/textview_design"
@@ -123,23 +126,16 @@
             >
             <Button
 
-                android:id="@+id/update"
-                android:layout_width="140dp"
+                android:id="@+id/updateFirebase"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Update"
+                android:text="Update Profile"
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:backgroundTint="@color/toolBarColor"
                 />
 
-            <Button
-                android:layout_width="140dp"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#FF0000"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                android:layout_alignParentRight="true"
-                android:text="De-Activate" />
+
 
         </RelativeLayout>
 
