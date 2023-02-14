@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".HomeFragment">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardview"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="20dp"
+            app:cardCornerRadius="10dp"
+            android:backgroundTint="@color/white"
+            tools:ignore="NotSibling"
+            >
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/idea"
+                android:layout_marginTop="10dp"
+                />
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="70dp"
+                android:src="@drawable/enjayvectorimage"
+                android:layout_gravity="end"
+                android:layout_marginRight="10dp"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:layout_marginTop="14dp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="INTERVIEW"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="40dp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PREPARATION"
+                    android:textColor="@color/purple_500"
+                    android:textSize="25dp"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="475dp"
+            android:layout_below="@id/cardview"
+            />
+
+    </RelativeLayout>
+
+</RelativeLayout>

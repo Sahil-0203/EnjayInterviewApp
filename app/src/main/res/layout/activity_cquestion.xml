@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CQuestion"
+    android:background="@color/bg">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/border" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/cQuestion"
+            android:text="C QUESTION"
+            android:textColor="@color/white"
+            android:textSize="30dp"
+            android:layout_marginTop="50dp"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            />
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/timerimg"
+            android:src="@drawable/timer"
+            android:layout_below="@+id/cQuestion"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/count"
+            android:text="00:15"
+            android:textSize="20dp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:layout_below="@+id/timerimg"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/question"
+            android:layout_below="@+id/count"
+            android:text="Questions"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:layout_marginHorizontal="35dp"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            />
+        <android.widget.Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/option1"
+            android:layout_marginHorizontal="45dp"
+            android:layout_below="@+id/question"
+            android:layout_marginTop="60dp"
+            android:background="@drawable/round"
+            android:text="option 1"
+            android:enabled="true"
+            android:onClick="option1Clicked"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            />
+        <android.widget.Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/option2"
+            android:enabled="true"
+            android:onClick="option2Clicked"
+            android:layout_marginHorizontal="45dp"
+            android:layout_below="@+id/option1"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/round"
+            android:text="option 2"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            />
+        <android.widget.Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/option3"
+            android:enabled="true"
+            android:onClick="option3Clicked"
+            android:layout_marginHorizontal="45dp"
+            android:layout_below="@+id/option2"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/round"
+            android:text="option 3"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            />
+        <android.widget.Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/option4"
+            android:enabled="true"
+            android:onClick="option4Clicked"
+            android:layout_marginHorizontal="45dp"
+            android:layout_below="@+id/option3"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/round"
+            android:text="option 4"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            />
+    </RelativeLayout>
+</RelativeLayout>
