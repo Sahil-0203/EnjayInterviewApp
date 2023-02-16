@@ -22,7 +22,7 @@
             app:menu="@menu/menu_bar"
             android:layout_alignParentBottom="true"
             android:background="@color/white"
-            app:layout_scrollFlags="scroll|enterAlways|snap"
+            app:layout_scrollFlagshttps://github.com/Sahil-0203/EnjayInterviewApp/pull/2/conflict?name=app%252Fsrc%252Fmain%252Fres%252Flayout%252Factivity_home.xml&ancestor_oid=aa6b8d9ad3174f437c0322d87e8c79418b13e1a5&base_oid=1cd4a7ae6714790d390725918c43d501c9e707cd&head_oid=73d139a27f5d0636cfe3e1a9702b5d790540f980="scroll|enterAlways|snap"
             app:itemRippleColor="@color/purple_500"
             />
 
@@ -39,6 +39,3 @@
         />
 
 </androidx.drawerlayout.widget.DrawerLayout>
-
-
-
