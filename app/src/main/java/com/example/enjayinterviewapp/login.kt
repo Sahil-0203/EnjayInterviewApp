@@ -28,7 +28,6 @@ import com.google.android.gms.tasks.Task
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
-import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.ktx.Firebase
 import java.util.*
@@ -64,17 +63,17 @@ class login : AppCompatActivity() {
 
                 override fun onError(e: FacebookException) {}
             })
-        binding.facebookimg.setOnClickListener(View.OnClickListener {
-            //                login to facebook--------------------------
-            LoginManager.getInstance()
-                .logInWithReadPermissions(this@login, Arrays.asList("public_Prfile"))
-        })
+//        binding.facebookimg.setOnClickListener(View.OnClickListener {
+//            //                login to facebook--------------------------
+//            LoginManager.getInstance()
+//                .logInWithReadPermissions(this@login, Arrays.asList("public_Prfile"))
+//        })
 
 
 //        ------------------------------------------------------------------------------------------
         userFocusListner()
         passwordFocusListner()
-        auth = Firebase.auth
+        auth = FirebaseAuth.getInstance()
 
 
 //        login with Facebook-----------------------------------------------------------------------
@@ -84,16 +83,16 @@ class login : AppCompatActivity() {
 
 //        login with google-------------------------------------------------------------------------
 
-        val gso= GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.client_ID))
-            .requestEmail()
-            .build()
-
-        googleSignInClient= GoogleSignIn.getClient(this,gso)
-
-        binding.googleimg.setOnClickListener {
-            signInGoogle()
-        }
+//        val gso= GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+//            .requestIdToken(getString(R.string.client_ID))
+//            .requestEmail()
+//            .build()
+//
+//        googleSignInClient= GoogleSignIn.getClient(this,gso)
+//
+//        binding.googleimg.setOnClickListener {
+//            signInGoogle()
+//        }
 
 
 
@@ -152,49 +151,49 @@ class login : AppCompatActivity() {
     }
 
     //signin google-------------------------------------------------------------------------------------
-    private fun signInGoogle() {
-        val signInIntent=googleSignInClient.signInIntent
-        launcher.launch(signInIntent)
+//    private fun signInGoogle() {
+//        val signInIntent=googleSignInClient.signInIntent
+//        launcher.launch(signInIntent)
+//
+//    }
+//    @SuppressLint("SuspiciousIndentation")
+//    private val launcher=registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+//            result ->
+//        if (result.resultCode== Activity.RESULT_OK)
+//        {
+//            val  task=GoogleSignIn.getSignedInAccountFromIntent(result.data)
+//            handleResults(task)
+//        }
+//    }
+//
+//    private fun handleResults(task: Task<GoogleSignInAccount>) {
+//
+//        if (task.isSuccessful){
+//
+//            val account: GoogleSignInAccount?=task.result
+//            if (account!=null){
+//                updateUI(account)
+//            }
+//        }
+//        else{
+//            Toast.makeText(this,task.exception.toString(), Toast.LENGTH_SHORT).show()
+//        }
+//    }
 
-    }
-    @SuppressLint("SuspiciousIndentation")
-    private val launcher=registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
-            result ->
-        if (result.resultCode== Activity.RESULT_OK)
-        {
-            val  task=GoogleSignIn.getSignedInAccountFromIntent(result.data)
-            handleResults(task)
-        }
-    }
-
-    private fun handleResults(task: Task<GoogleSignInAccount>) {
-
-        if (task.isSuccessful){
-
-            val account: GoogleSignInAccount?=task.result
-            if (account!=null){
-                updateUI(account)
-            }
-        }
-        else{
-            Toast.makeText(this,task.exception.toString(), Toast.LENGTH_SHORT).show()
-        }
-    }
-
-    private fun updateUI(account: GoogleSignInAccount) {
-
-        val credential= GoogleAuthProvider.getCredential(account.idToken,null)
-        auth.signInWithCredential(credential).addOnCompleteListener{
-            if (it.isSuccessful){
-                Toast.makeText(this,"Login Successful", Toast.LENGTH_SHORT).show()
-                intent=Intent(applicationContext,HomeActivity::class.java)
-                startActivity(intent)
-            }else
-            {
-                Toast.makeText(this,it.exception.toString(), Toast.LENGTH_SHORT).show()
-            }
-        }
-    }
+//    private fun updateUI(account: GoogleSignInAccount) {
+//
+//        val credential= GoogleAuthProvider.getCredential(account.idToken,null)
+//        auth.signInWithCredential(credential).addOnCompleteListener{
+//            if (it.isSuccessful){
+//                Toast.makeText(this,"Login Successful", Toast.LENGTH_SHORT).show()
+//                intent=Intent(applicationContext,HomeActivity::class.java)
+//                startActivity(intent)
+//            }else
+//            {
+//                Toast.makeText(this,it.exception.toString(), Toast.LENGTH_SHORT).show()
+//            }
+//        }
+//    }
 
 
     //--------------------------------------------------------------------------------------------------

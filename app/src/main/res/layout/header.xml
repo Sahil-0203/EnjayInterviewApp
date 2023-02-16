@@ -24,7 +24,6 @@
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Atharva Machhi"
             android:textColor="@color/white"
             android:textSize="17dp"
             android:layout_marginTop="10dp"
@@ -36,7 +35,7 @@
             android:id="@+id/contact"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="6355650644"
+
             android:textColor="@color/white"
             android:textSize="17dp"
             android:layout_marginTop="10dp"

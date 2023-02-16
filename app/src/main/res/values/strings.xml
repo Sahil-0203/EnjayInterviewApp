@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">EnjayInterviewApp</string>
 
-    <string name="client_ID">1082028555812-nr55tj27bkpkana463so3am10oiippd0.apps.googleusercontent.com</string>
+    <string name="client_ID">464487550920-15oebpan5hh7kg721fus0muqvu8qvraj.apps.googleusercontent.com</string>
 
     <string name="facebook_app_id">498821489001387</string>
     <string name="fb_login_protocol_scheme">fb498821489001387</string>
@@ -10,5 +10,4 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="Open">open</string>
     <string name="Close">close</string>
-
 </resources>
