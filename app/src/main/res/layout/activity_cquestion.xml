@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,117 +7,160 @@
     tools:context=".CQuestion"
     android:background="@color/bg">
 
-
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/border" >
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/title"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/cQuestion"
-            android:text="C QUESTION"
+            android:layout_marginTop="16dp"
+            android:fontFamily="cursive"
+            android:gravity="center_horizontal"
+            android:text="C Quiz"
             android:textColor="@color/white"
-            android:textSize="30dp"
-            android:layout_marginTop="50dp"
-            android:layout_centerHorizontal="true"
-            android:textStyle="bold"
-            />
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:id="@+id/timerimg"
-            android:src="@drawable/timer"
-            android:layout_below="@+id/cQuestion"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
+            android:textSize="32sp"
+            android:textStyle="bold"/>
 
-            />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            >
+
+            <TextView
+                android:id="@+id/txt_play_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Score - 00"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/tv_noOfQues"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="1/10"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:ignore="MissingConstraints" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
         <TextView
+            android:id="@+id/quiz_timer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/count"
-            android:text="00:15"
-            android:textSize="20dp"
+            android:text="Time - 00"
             android:textColor="@color/white"
+            android:textSize="23sp"
             android:textStyle="bold"
-            android:layout_below="@+id/timerimg"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="2dp"
+            android:layout_gravity="center"/>
+
         <TextView
+            android:id="@+id/tv_question"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/question"
-            android:layout_below="@+id/count"
-            android:text="Questions"
-            android:textColor="@color/white"
-            android:textStyle="bold"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="16dp"
+            android:paddingStart="22dp"
+            android:paddingTop="30dp"
+            android:paddingEnd="22dp"
+            android:paddingBottom="30dp"
+            android:text="Question"
+            android:background="@drawable/questionbackground"
+            android:textColor="@android:color/white"
             android:textSize="20dp"
-            android:layout_marginHorizontal="35dp"
-            android:layout_marginTop="20dp"
-            android:layout_centerHorizontal="true"
-            android:gravity="center"
-            />
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:id="@+id/radiogrp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            >
+
+            <RadioButton
+                android:id="@+id/radioButton1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
+                android:padding="18dp"
+                android:text="Option 1"
+                android:textSize="17dp"
+                android:background="@drawable/questionbackground"
+                android:textColor="@color/white"/>
+
+            <RadioButton
+                android:id="@+id/radioButton2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="16dp"
+                android:padding="18dp"
+                android:text="Option 2"
+                android:textSize="17dp"
+                android:background="@drawable/questionbackground"
+                android:textColor="@color/white"/>
+
+            <RadioButton
+                android:id="@+id/radioButton3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="16dp"
+                android:padding="18dp"
+                android:text="Option 3"
+                android:textSize="17dp"
+                android:background="@drawable/questionbackground"
+                android:textColor="@color/white"/>
+
+            <RadioButton
+                android:id="@+id/radioButton4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="16dp"
+                android:padding="18dp"
+                android:text="Option 4"
+                android:textSize="17dp"
+                android:background="@drawable/questionbackground"
+                android:textColor="@color/white"/>
+        </RadioGroup>
+
         <android.widget.Button
-            android:layout_width="match_parent"
+            android:id="@+id/nextQuestionBtn"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:id="@+id/option1"
-            android:layout_marginHorizontal="45dp"
-            android:layout_below="@+id/question"
-            android:layout_marginTop="60dp"
-            android:background="@drawable/round"
-            android:text="option 1"
-            android:enabled="true"
-            android:onClick="option1Clicked"
+            android:text="Next Question"
+            android:textColor="@color/black"
             android:textSize="20dp"
+            android:padding="10dp"
             android:textStyle="bold"
-            />
-        <android.widget.Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/option2"
-            android:enabled="true"
-            android:onClick="option2Clicked"
-            android:layout_marginHorizontal="45dp"
-            android:layout_below="@+id/option1"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/round"
-            android:text="option 2"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            />
-        <android.widget.Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/option3"
-            android:enabled="true"
-            android:onClick="option3Clicked"
-            android:layout_marginHorizontal="45dp"
-            android:layout_below="@+id/option2"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/round"
-            android:text="option 3"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            />
-        <android.widget.Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/option4"
-            android:enabled="true"
-            android:onClick="option4Clicked"
-            android:layout_marginHorizontal="45dp"
-            android:layout_below="@+id/option3"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/round"
-            android:text="option 4"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            />
-    </RelativeLayout>
-</RelativeLayout>
+            android:backgroundTint="@color/white"
+            android:background="@drawable/buttonshape"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"/>
+
+    </LinearLayout>
+
+</ScrollView>

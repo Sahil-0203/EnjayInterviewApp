@@ -16,8 +16,9 @@ class PythonQuiz : AppCompatActivity() {
 
         start.setOnClickListener {
 
-            intent= Intent(this,JavaQuestion::class.java)
+            intent= Intent(this@PythonQuiz,PythonQuestion::class.java)
             startActivity(intent)
+
         }
     }
 }

@@ -7,124 +7,124 @@
     tools:context=".Result_Activity"
     android:background="@color/bg">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:background="@drawable/logo"
-        android:id="@+id/resultimg"
-        />
+<!--    <ImageView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="350dp"-->
+<!--        android:background="@drawable/logo"-->
+<!--        android:id="@+id/resultimg"-->
+<!--        />-->
 
-    <android.widget.Button
-        android:layout_width="240dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/back"
-        android:text="Go To Home"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:layout_below="@+id/cardviewResult"
-        android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/border"
-        />
+<!--    <android.widget.Button-->
+<!--        android:layout_width="240dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:id="@+id/back"-->
+<!--        android:text="Go To Home"-->
+<!--        android:textStyle="bold"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:layout_below="@+id/cardviewResult"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:background="@drawable/border"-->
+<!--        />-->
 
-<ScrollView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_below="@id/resultimg"
-    android:layout_centerHorizontal="true"
-    android:id="@+id/cardviewResult"
+<!--<ScrollView-->
+<!--    android:layout_width="wrap_content"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:layout_below="@id/resultimg"-->
+<!--    android:layout_centerHorizontal="true"-->
+<!--    android:id="@+id/cardviewResult"-->
 
-    >
-
-
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="310dp"
-        android:layout_height="300dp"
-        app:cardCornerRadius="50dp"
-        android:layout_below="@id/resultimg"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="260dp"
-            >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/result"
-                android:text="Result"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="50dp"
-                android:layout_centerHorizontal="true"
-                />
-            <LinearLayout
-                android:id="@+id/output"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_horizontal"
-                android:layout_gravity="center"
-                android:layout_below="@id/result"
-                android:background="@drawable/resultshape"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="20dp">
-
-                <TextView
-                    android:id="@+id/correctAns"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="10"
-                    android:textSize="60dp"
-                    android:textColor="@color/black">
-
-                </TextView>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="/"
-                    android:textSize="60dp"
-                    android:textStyle="bold"
-                    android:padding="5dp"
-                    android:textColor="@color/black">
-
-                </TextView>
-                <TextView
-                    android:id="@+id/totalAns"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="10"
-                    android:textSize="60dp"
-                    android:textColor="@color/black">
-
-                </TextView>
+<!--    >-->
 
 
 
-            </LinearLayout>
-            <TextView
-                android:id="@+id/performance"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="PERFORMANCE"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="33dp"
-                android:layout_marginTop="20dp"
-                android:layout_below="@+id/output"
-                android:layout_centerHorizontal="true"
+<!--    <androidx.cardview.widget.CardView-->
+<!--        android:layout_width="310dp"-->
+<!--        android:layout_height="300dp"-->
+<!--        app:cardCornerRadius="50dp"-->
+<!--        android:layout_below="@id/resultimg"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginTop="20dp">-->
 
-                />
+<!--        <RelativeLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="260dp"-->
+<!--            >-->
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:id="@+id/result"-->
+<!--                android:text="Result"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textStyle="bold"-->
+<!--                android:textSize="50dp"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                />-->
+<!--            <LinearLayout-->
+<!--                android:id="@+id/output"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:gravity="center_horizontal"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_below="@id/result"-->
+<!--                android:background="@drawable/resultshape"-->
+<!--                android:layout_marginHorizontal="20dp"-->
+<!--                android:layout_marginTop="20dp">-->
 
-        </RelativeLayout>
+<!--                <TextView-->
+<!--                    android:id="@+id/correctAns"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="10"-->
+<!--                    android:textSize="60dp"-->
+<!--                    android:textColor="@color/black">-->
 
-    </androidx.cardview.widget.CardView>
+<!--                </TextView>-->
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="/"-->
+<!--                    android:textSize="60dp"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:padding="5dp"-->
+<!--                    android:textColor="@color/black">-->
+
+<!--                </TextView>-->
+<!--                <TextView-->
+<!--                    android:id="@+id/totalAns"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="10"-->
+<!--                    android:textSize="60dp"-->
+<!--                    android:textColor="@color/black">-->
+
+<!--                </TextView>-->
 
 
 
-</ScrollView>
+<!--            </LinearLayout>-->
+<!--            <TextView-->
+<!--                android:id="@+id/performance"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="PERFORMANCE"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textStyle="bold"-->
+<!--                android:textSize="33dp"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:layout_below="@+id/output"-->
+<!--                android:layout_centerHorizontal="true"-->
+
+<!--                />-->
+
+<!--        </RelativeLayout>-->
+
+<!--    </androidx.cardview.widget.CardView>-->
+
+
+
+<!--</ScrollView>-->
 
 
 </RelativeLayout>

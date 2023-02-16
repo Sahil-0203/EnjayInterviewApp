@@ -17,7 +17,6 @@ class PhpQuiz : AppCompatActivity() {
         start.setOnClickListener {
             intent= Intent(applicationContext,PhpQuestion::class.java)
             startActivity(intent)
-            finish()
 
         }
     }

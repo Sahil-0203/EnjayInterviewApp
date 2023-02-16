@@ -14,8 +14,10 @@ class JavaQuiz : AppCompatActivity() {
 
         start.setOnClickListener {
 
-            intent= Intent(this,JavaQuestion::class.java)
+            intent= Intent(this@JavaQuiz,JavaQuestion::class.java)
             startActivity(intent)
+
+
         }
     }
 }

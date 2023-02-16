@@ -16,7 +16,6 @@ class KotlinQuiz : AppCompatActivity() {
         start.setOnClickListener {
             intent= Intent(applicationContext,KotlinQuestion::class.java)
             startActivity(intent)
-            finish()
 
         }
     }
