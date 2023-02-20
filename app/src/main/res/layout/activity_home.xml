@@ -22,7 +22,6 @@
             app:menu="@menu/menu_bar"
             android:layout_alignParentBottom="true"
             android:background="@color/white"
-            app:layout_scrollFlags="scroll|enterAlways|snap"
             app:itemRippleColor="@color/purple_500"
             />
 
@@ -39,5 +38,3 @@
         />
 
 </androidx.drawerlayout.widget.DrawerLayout>
-
-
