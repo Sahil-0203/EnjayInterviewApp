@@ -15,7 +15,6 @@ class CplusQuiz : AppCompatActivity() {
         start.setOnClickListener {
             intent= Intent(applicationContext, CplusQuestion::class.java)
             startActivity(intent)
-            finish()
 
         }
     }

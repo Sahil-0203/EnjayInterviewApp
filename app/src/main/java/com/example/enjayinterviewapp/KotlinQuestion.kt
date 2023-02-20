@@ -1,228 +1,428 @@
 package com.example.enjayinterviewapp
 
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.res.ColorStateList
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.view.View
+import android.view.LayoutInflater
 import android.widget.Button
+import android.widget.RadioButton
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import com.example.enjayinterviewapp.databinding.ActivityKotlinQuestionBinding
 import java.util.*
 import java.util.concurrent.TimeUnit
-import kotlin.collections.ArrayList
 
-class KotlinQuestion : AppCompatActivity() {
+class KotlinQuestion : AppCompatActivity()
+{
+    private lateinit var activityKotlinQuestion: ActivityKotlinQuestionBinding
 
-    lateinit var questionsList:ArrayList<QuestionModel>
-    private var index:Int = 0
-    lateinit var questionModel: QuestionModel
-
-    private var correctAnswerCount:Int=0
-    private var wrongAnswerCount:Int=0
-
-    lateinit var countDown: TextView
-    private lateinit var questions: TextView
-    private lateinit var option1: Button
-    private lateinit var option2: Button
-    private lateinit var option3: Button
-    private lateinit var option4: Button
+    private var countDownTimer: CountDownTimer? = null
+    private val countDownInMilliSecond: Long = 30000
+    private val countDownInterval: Long = 1000
+    private var timeLeftMilliSeconds: Long = 0
+    private var defaultColor: ColorStateList? = null
+    private var score = 0
+    private var correct = 0
+    private var wrong = 0
+    private var skip = 0
+    private var qIndex = 0
+    private var updateQueNo = 1
 
     private var backPressedTime: Long = 0
     private var backToast: Toast? = null
 
+    private var questions = arrayOf(
+        "Q.1. Kotlin is developed by?",
+        "Q.2. Which of following is used to handle null exceptions in Kotlin?",
+        "Q.3. Which file extension is used to save Kotlin files.",
+        "Q.4. All classes in Kotlin classes are by default?",
+        "Q.5. What is correct way to create an arraylist in Kotlin?",
+        "Q.6. What is an immutable variable?",
+        "Q.7. Which of following targets currently not supported by Kotlin?",
+        "Q.8. How to make a multi lined comment in Kotlin?",
+        "Q.9. How do you get the length of a string in Kotlin?",
+        "Q.10. Which of the followings constructors are available in Kotlin?",
+        "Q.11. Which of the following extension methods are used in Kotlin?",
+        "Q.12. Which of the following is not the basic data types in Kotlin?",
+        "Q.13. Kotlin is interoperable with Java because it uses JVM bytecode.",
+        "Q.14. How can you declare a variable in Kotlin?",
+        "Q.15. How many types of constructors available in Kotlin?",
+        "Q.16. Which of the following is Use for reading contents of file to ByteArray?",
+        "Q.17. What is the use of data class in Kotlin?",
+        "Q.18. Is there any Ternary Conditional Operator in Kotlin like in Java?",
+        "Q.19. Which of th following is used to compare two strings in Kotlin?",
+        "Q.20. ____________ helps to iterate through a range.",
+        "Q.21. Which file extension is used to save Kotlin files?",
+        "Q.22. Which keyword is used to declare a function?",
+        "Q.23. Which operator is used to add together two values?",
+        "Q.24. What is the output of the following code: println(5 > 3 && 5 < 10)",
+        "Q.25. Which symbol is used for string templates/interpolation?,"
+    )
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    private var answer = arrayOf(
+        "JetBrains",            //1
+        "Elvis Operator",
+        ".kt or .kts",
+        "final",          //4
+        "val list = arrayListOf(1, 2, 3)",
+        "A variable that cannot change, read-only",    //6
+        ".NET CLR",
+        "/* */",
+        "str.length",        //9
+        "Both A and B",
+        "All of the Above",
+        "Lists",  //12
+        "Yes",
+        "value my_var: Char",//14
+        "2",
+        "readBytes()",
+        "holds the basic data types",     //17
+        "TRUE",
+        "Both A and B",
+        "Ranges operator",//20
+        ".kt",
+        "fun",
+        "The + sign ",//23
+        "true",
+        "$"     //25
+    )
+
+    private var options = arrayOf(
+        "JetBrains",
+        "Google",
+        "Microsoft",
+        "Adobe",              //1
+        "Lambda function",
+        "Sealed Class",
+        "Range",
+        "Elvis Operator",         //2
+        ".kt or .kts",
+        ".android",
+        ".kot",
+        ".java",          //3
+        "sealed",
+        "abstract",
+        "public",
+        "final",                                //4
+        "val list = arrayListOf(1, 2, 3)",
+        "val set = hashSetOf(1, 2, 3)",
+        "val map = hashMapOf(1 to \"one\", 2 to \"two\", 3 to \"three\")",
+        "enum class Color {RED, GREEN, BLUE}",                                  //5
+        "A variable that can be changed",
+        "A variable used for string interpolation",
+        "A variable that cannot change, read-only",
+        "None of the Above",     //6
+        ".NET CLR",
+        "LLVM",
+        "JavaScript",
+        "None of the Above",      //7
+        "//",
+        "/* */",
+        "/ multi line comment /",
+        "None of the Above",           //8
+        "str.length",
+        "str.lengthOf",
+        "length(str)",
+        "lengthOf()",        //9
+        "Primary constructor",
+        "Secondary constructor",
+        "Both A and B",
+        "None of the Above",      //10
+        "Read texts () & Headlines ()",
+        "Buffer reader ()",
+        "Read each line ()",
+        "All of the Above",        //11
+        "Lists",
+        "Arrays",
+        "Numbers",
+        "Strings",        //12
+        "Yes",
+        "No",
+        "Can be yes or no",
+        "Can not say",        //13
+        "value my_var: Char",
+        "value my_var: Char",
+        "value Char : my_var",
+        "my_var: Char",      //14
+        "1",
+        "2",
+        "3",
+        "4",            //15
+        "readText()",
+        "readLines()",
+        "readBytes()",
+        "bufferedReader()",                    //16
+        "present the basic data types",
+        "delete the basic data types",
+        "extract the basic data types",
+        "holds the basic data types",          //17
+        "TRUE",
+        "FALSE",
+        "Can be true or false",
+        "Can not say",        //18
+        "Using == operator",
+        "Using compareTo() extension function",
+        "Both A and B",
+        "None of the Above",         //19
+        "OR operator",
+        "And operator",
+        "Ranges operator",
+        "Conditional operator",     //20
+        ".java",
+        ".kt",
+        ".kotlin",
+        ".kot",        //21
+        "fun",
+        "function",
+        "define",
+        "decl",                 //22
+        "The + sign ",
+        "The * sign ",
+        "The & sign ",
+        "The ADD keyword",        //23
+        "true",
+        "false",
+        "5",
+        "2",        //24
+        "*",
+        "$",
+        "&",
+        "."           //25
+    )
+
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_kotlin_question)
-        supportActionBar?.hide()
+        activityKotlinQuestion= ActivityKotlinQuestionBinding.inflate(layoutInflater)
+        setContentView(activityKotlinQuestion.root)
 
-
-
-        countDown=findViewById(R.id.count)
-        questions=findViewById(R.id.question)
-        option1=findViewById(R.id.option1)
-        option2=findViewById(R.id.option2)
-        option3=findViewById(R.id.option3)
-        option4=findViewById(R.id.option4)
-
-        questionsList= ArrayList()
-        questionsList.add(QuestionModel("What is actually electricity?","A flow of water","A flow of air","A flow of electrons"," A flow of atoms","A flow of electrons"))
-        questionsList.add(QuestionModel("What is the speed of sound?","120 km/h","1,200 km/h","400 km/h","700 km/h","1,200 km/h"))
-        questionsList.add(QuestionModel("What is the main component of the sun?","Liquid lava","Gas","Molten iron","Rock","Gas"))
-        questionsList.add(QuestionModel("Which of the following animals can run the fastest?","Cheetah","Leopard","Tiger","Lion","Cheetah"))
-        questionsList.add(QuestionModel("Which company is known for publishing the Mario video game?","Xbox","Nintendo","SEGA","Electronic Arts","Nintendo"))
-
-        questionsList.shuffle()
-        questionModel= questionsList[index]
-
-        setAllQuestions()
-        countdown()
-
-
+        initViews()
     }
 
-    fun countdown(){
-        val duration:Long= TimeUnit.SECONDS.toMillis(2)
+    //    @SuppressLint("SetTextI18n")
+    private fun showNextQuestion()
+    {
+
+        checkAnswer()
+
+        activityKotlinQuestion.apply {
+
+            if (updateQueNo < 25)
+            {
+                tvNoOfQues.text = "${updateQueNo + 1}/25"
+                updateQueNo++
+            }
+            if (qIndex <= questions.size - 1)
+            {
+                tvQuestion.text = questions[qIndex]
+                radioButton1.text = options[qIndex * 4] // 2*4=8
+                radioButton2.text = options[qIndex * 4 + 1] //  2*4+1=9
+                radioButton3.text = options[qIndex * 4 + 2] //  2*4+2=10
+                radioButton4.text = options[qIndex * 4 + 3] //  2*4+3=11
+            }
+            else
+            {
+                score = correct
+                val intent = Intent(this@KotlinQuestion, JavaQuizResult::class.java)
+                intent.putExtra("correct", correct)
+                intent.putExtra("wrong", wrong)
+                intent.putExtra("skip", skip)
+                startActivity(intent)
+                finish()
+            }
+            radiogrp.clearCheck()
+        }
+    }
+    //    @SuppressLint("SetTextI18n")
+    private fun checkAnswer()
+    {
+
+        activityKotlinQuestion.apply {
+
+            if (radiogrp.checkedRadioButtonId == -1)
+            {
+                skip++
+                timeOverAlertDialog()
+            }
+            else
+            {
+                val checkRadioButton = findViewById<RadioButton>(radiogrp.checkedRadioButtonId)
+                val checkAnswer = checkRadioButton.text.toString()
+
+                if (checkAnswer == answer[qIndex])
+                {
+                    correct++
+                    txtPlayScore.text = "Score : $correct"
+                    correctAlertDialog()
+                    countDownTimer?.cancel()
+                }
+                else
+                {
+                    wrong++
+                    wrongAlertDialog()
+                    countDownTimer?.cancel()
+                }
+            }
+            qIndex++
+        }
+    }
+
+    //    @SuppressLint("SetTextI18n")
+    private fun initViews()
+    {
+
+        activityKotlinQuestion.apply {
+
+            tvQuestion.text = questions[qIndex]
+            radioButton1.text = options[0]
+            radioButton2.text = options[1]
+            radioButton3.text = options[2]
+            radioButton4.text = options[3]
+
+            nextQuestionBtn.setOnClickListener {
+                if (radiogrp.checkedRadioButtonId == -1)
+                {
+                    Toast.makeText(this@KotlinQuestion,
+                        "Please select an options",
+                        Toast.LENGTH_SHORT)
+                        .show()
+                }
+                else
+                {
+                    showNextQuestion()
+                }
+            }
+
+            tvNoOfQues.text = "$updateQueNo/25"
+            tvQuestion.text = questions[qIndex]
+
+            defaultColor = quizTimer.textColors
 
 
-        object : CountDownTimer(duration, 1000) {
-            override fun onTick(millisUntilFinished: Long) {
+            timeLeftMilliSeconds = countDownInMilliSecond
 
+            statCountDownTimer()
+        }
+    }
 
-                val sDuration:String= String.format(
-                    Locale.ENGLISH,
-                    "%02d:%02d",
-                    TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished),
-                    TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished)- TimeUnit.MINUTES.toSeconds(
-                        TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)))
+    private fun statCountDownTimer()
+    {
+        countDownTimer = object : CountDownTimer(timeLeftMilliSeconds, countDownInterval)
+        {
+            override fun onTick(millisUntilFinished: Long)
+            {
 
-                countDown.text = sDuration
+                activityKotlinQuestion.apply {
+
+                    timeLeftMilliSeconds = millisUntilFinished
+                    val second = TimeUnit.MILLISECONDS.toSeconds(timeLeftMilliSeconds).toInt()
+
+                    val timer = String.format(Locale.getDefault(), "Time: %02d", second)
+                    quizTimer.text = timer
+
+                    if (timeLeftMilliSeconds < 10000)
+                    {
+                        quizTimer.setTextColor(Color.RED)
+                    }
+                    else
+                    {
+                        quizTimer.setTextColor(defaultColor)
+                    }
+                }
+            }
+
+            override fun onFinish()
+            {
+                showNextQuestion()
 
             }
-            override fun onFinish() {
-                index++
-                if (index<questionsList.size){
-                    questionModel=questionsList[index]
-                    setAllQuestions()
-                    resetBackground()
-                    enableButton()
-                    countdown()
-
-                }
-                else{
-
-                    gameResult()
-
-                }
-
-
-            }
-
-
-
         }.start()
-
-    }
-    private fun correctAns(option: Button){
-        option.background=getDrawable(R.drawable.right_bg)
-
-        correctAnswerCount++
-
-
-
-    }
-    private fun wrongAns(option:Button){
-
-        option.background=resources.getDrawable(R.drawable.wrong_bg)
-
-        wrongAnswerCount++
-
-
     }
 
-    private fun gameResult(){
-        var intent= Intent(this,Result_Activity::class.java)
+    @SuppressLint("SetTextI18n")
+    private fun correctAlertDialog()
+    {
+        val builder = AlertDialog.Builder(this@KotlinQuestion)
+        val view = LayoutInflater.from(this@KotlinQuestion).inflate(R.layout.correctansdialog, null)
+        builder.setView(view)
 
-        intent.putExtra("correct",correctAnswerCount.toString())
-        intent.putExtra("total",questionsList.size.toString())
+        val tvScore = view.findViewById<TextView>(R.id.tvDialog_score)
+        val correctOkBtn = view.findViewById<Button>(R.id.correct_ok)
 
-        startActivity(intent)
-        finish()
-    }
-    private fun setAllQuestions() {
-        questions.text=questionModel.question
-        option1.text=questionModel.option1
-        option2.text=questionModel.option2
-        option3.text=questionModel.option3
-        option4.text=questionModel.option4
-    }
-    private fun enableButton(){
-        option1.isClickable=true
-        option2.isClickable=true
-        option3.isClickable=true
-        option4.isClickable=true
-    }
-    private fun disableButton(){
-        option1.isClickable=false
-        option2.isClickable=false
-        option3.isClickable=false
-        option4.isClickable=false
-    }
-    private fun resetBackground(){
-        option1.background=resources.getDrawable(R.drawable.round)
-        option2.background=resources.getDrawable(R.drawable.round)
-        option3.background=resources.getDrawable(R.drawable.round)
-        option4.background=resources.getDrawable(R.drawable.round)
-    }
-    fun option1Clicked(view: View){
-        disableButton()
-        if(questionModel.option1==questionModel.answer){
-            option1.background=resources.getDrawable(R.drawable.right_bg)
+        tvScore.text = "Score : $correct"
 
+        var alertDialog = builder.create()
 
-            correctAns(option1)
-
+        correctOkBtn.setOnClickListener {
+            timeLeftMilliSeconds = countDownInMilliSecond
+            statCountDownTimer()
+            alertDialog.dismiss()
         }
-        else{
-            wrongAns(option1)
-        }
+        alertDialog.show()
     }
 
-    fun option2Clicked(view: View){
-        disableButton()
-        if(questionModel.option2==questionModel.answer){
-            option2.background=resources.getDrawable(R.drawable.right_bg)
+    @SuppressLint("SetTextI18n")
+    private fun wrongAlertDialog()
+    {
+        val builder = AlertDialog.Builder(this@KotlinQuestion)
+        val view = LayoutInflater.from(this@KotlinQuestion).inflate(R.layout.wrongansdialog, null)
 
+        builder.setView(view)
 
-            correctAns(option2)
+        val tvWrongDialogCorrectAns = view.findViewById<TextView>(R.id.tv_wrongDialog_correctAns)
+        val wrongOk = view.findViewById<Button>(R.id.wrong_ok)
 
+        tvWrongDialogCorrectAns.text = "Correct Answer : " + answer[qIndex]
+
+        var alertDialog = builder.create()
+
+        wrongOk.setOnClickListener {
+            timeLeftMilliSeconds =
+                countDownInMilliSecond
+            statCountDownTimer()
+            alertDialog.dismiss()
         }
-        else{
-            wrongAns(option2)
-        }
-    }
-    fun option3Clicked(view: View){
-        disableButton()
-        if(questionModel.option3==questionModel.answer){
 
-            option3.background=resources.getDrawable(R.drawable.right_bg)
-
-
-            correctAns(option3)
-
-
-        }
-        else{
-            wrongAns(option3)
-        }
-    }
-    fun option4Clicked(view: View){
-        disableButton()
-        if(questionModel.option4==questionModel.answer){
-            option4.background=resources.getDrawable(R.drawable.right_bg)
-
-
-            correctAns(option4)
-
-        }
-        else{
-            wrongAns(option4)
-        }
+        alertDialog.show()
     }
 
+    @SuppressLint("SetTextI18n")
+    private fun timeOverAlertDialog()
+    {
+        val builder = AlertDialog.Builder(this@KotlinQuestion)
+        val view = LayoutInflater.from(this@KotlinQuestion).inflate(R.layout.timerdialog, null)
+
+        builder.setView(view)
+
+        val timeOverOk = view.findViewById<Button>(R.id.timeOver_ok)
+        var alertDialog = builder.create()
+
+        timeOverOk.setOnClickListener {
+            timeLeftMilliSeconds = countDownInMilliSecond
+
+            statCountDownTimer()
+            alertDialog.dismiss()
+        }
+        alertDialog.show()
+    }
     override fun onBackPressed() {
 
-        if (backPressedTime + 2000 > System.currentTimeMillis()) {
+        if (backPressedTime + 2000 > System.currentTimeMillis())
+        {
             backToast?.cancel()
             finish()
         }
-
-        else {
+        else
+        {
             backToast = Toast.makeText(baseContext, "DOUBLE PRESS TO QUIT Quiz", Toast.LENGTH_SHORT)
             backToast?.show()
+
         }
         backPressedTime = System.currentTimeMillis()
-
     }
 }

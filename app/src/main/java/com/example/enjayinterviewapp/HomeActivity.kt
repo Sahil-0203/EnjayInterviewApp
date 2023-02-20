@@ -22,12 +22,12 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import java.net.URL
 
 private val homeFragment=HomeFragment()
 
 
 class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+
     private lateinit var binding: ActivityHomeBinding
     private lateinit var toggle: ActionBarDrawerToggle
     private lateinit var auth: FirebaseAuth

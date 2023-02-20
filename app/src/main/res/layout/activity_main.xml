@@ -8,11 +8,11 @@
     android:orientation="vertical"
     android:background="#F4F5FA"
     android:gravity="center">
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/splash"
-        />
+        android:src="@drawable/splash" />
 
     <ProgressBar
         style="?android:attr/progressBarStyle"
