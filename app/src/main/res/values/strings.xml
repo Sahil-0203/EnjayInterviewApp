@@ -12,7 +12,7 @@
     <string name="Close">close</string>
 
     <string name="common_interview_question">COMMON INTERVIEW QUESTION</string>
-    
+
     <string name="number1">How to Answer :-\n\nTo answer, walk them through our background, starting at how we began our career or our current line of work.\n
 Take them through key accomplishments,key career moves we’ve made, and end by sharing what we’re looking to do next in our career and why we’re job hunting.\n
 Good answer sample :-\n
@@ -36,7 +36,7 @@ This is what I focused on in both of my previous positions, and was even the foc
 “Since beginning my career, I’ve wanted to work for a larger organization in this industry, and I know you’re one of the leaders in this space.\n
 I’m very interested in your services, especially the mobile applications you’re building recently,so I’d be excited to come here and grow my skills with an organization like yours.”</string>
 
-<string name="number4">How to Answer :-\n\nTry to talk about them and how we’ll help them. What will be better for them if they hire us?\n
+    <string name="number4">How to Answer :-\n\nTry to talk about them and how we’ll help them. What will be better for them if they hire us?\n
 What will we improve for them?\n
 And show we’ve done our research. Make it clear that we know what this position involves, and we’re ready to perform the tasks.\n
 Good answer sample :-\n
@@ -195,7 +195,8 @@ Before we go, try to find out who we’ll be meeting with, whether it’s an HR 
 Why? our interview answers and conversation topics should vary based on the person we are speaking with, and by knowing who we will be talking to, we can spend time thinking through how we might connect with each of these people
     </string>
 
-    <string name="number23">Atharva</string>
+    <string name="number23">\nI think one of my greatest strengths is learning things quickly and staying positive. An example could be in recent years, my professor told me to come up with a new idea and that field was totally new for me. Every time I came up with an idea, either it was either already solved or not feasible at my personal level. So my Idea was not falling into place but by continuing to read and going through the literature survey and keeping myself motivated, I come up with an idea which is new and implementable at my level.\n
+    </string>
 
     <string name="number24">Unfortunately this question is left off of many lists of job interview questions and answers samples.\n
 But it’s extremely important, and the wrong answer here can cost us thousands of dollars in the negotiation later on.\n
@@ -214,5 +215,97 @@ If we don’t ask good questions to each person we speak with, we are very unlik
 Good answer sample :-\n
 “Yes, I have a couple of questions actually. The first thing I wanted to ask: is this a newly-created position, or did somebody hold this role in the past? And if so, what did that person go on to do after this position?”</string>
 
+
+    //android
+
+    <string name="android1">\nAndroid is an open-sourced operating system that is used on mobile devices, such as mobiles and tablets. The Android application executes within its own process and its own instance of Dalvik Virtual Machine(DVM) or Android RunTime(ART).\n
+    </string>
+
+    <string name="android2">\nJava and Kotlin\n
+    </string>
+
+    <string name="android3">\nActivity in java is a single screen that represents GUI(Graphical User Interface) with which users can interact in order to do something like dial the phone, view email, etc.\n
+For example, the Facebook start page where you enter your email/phone number and password to log in acts as an activity\n
+    </string>
+
+    <string name="android4">\nService is an application component that facilitates an application to run in the background in order to perform long-running operations without user interaction. A service can run continuously in the background even if the application is closed or even after the user switches to another application.\n
+    </string>
+
+    <string name="android5">\nThe core building blocks of Android are:\n\n
+1. Activity\n
+2. View\n
+3. Intent\n
+4. Service\n
+5. Content Provider\n
+6. Fragment etc.\n
+    </string>
+
+    <string name="android6">\nThere are 7 life-cycle methods of activity. They are as follows:\n\n
+1. onCreate()\n
+2. onStart()\n
+3. onResume()\n
+4. onPause()\n
+5. onStop()\n
+6. onRestart()\n
+7. onDestroy()\n
+    </string>
+
+    <string name="android7">\nIt is a kind of message or information that is passed to the components. It is used to launch an activity, display a web page, send SMS, send email, etc. There are two types of intents in android:\n\n
+1. Implicit Intent\n
+2. Explicit Intent\n
+    </string>
+
+    //ios
+
+    <string name="ios1">\nARC (Automatic Reference Counting) is a compiler-level feature that defines the process of managing the lifetime of objects in objective-C.\n
+    </string>
+
+    <string name="ios2">\nThe bundle ID is used for both OS X apps and iOS.  It uniquely defines every iOS application. A bundle identifier can recognize any update to your app.\n
+    </string>
+
+    <string name="ios3">\nThere are four data types which are as follows:\n
+1. Bool\n
+2. CGfloat\n
+3. NSintegar\n
+4. NSstring\n
+    </string>
+
+    <string name="ios4">\nIt is used for building software codes to run on iOS for the iPad and iPhone. Cocoa Touch is written in the objective-C language and has a different set of graphical control elements to Cocoa.\n
+    </string>
+
+    <string name="ios5">\nThe methods to achieve concurrency are:\n
+1. Dispatch queues\n
+2. Threads\n
+3. Operation Queues\n
+    </string>
+
+    <string name="ios6">\nIt is said when it is not launched or gets terminated by the system while running.\n
+    </string>
+
+    <string name="web1">\nA beginner web developer is expected to have a fundamental knowledge of HTML, CSS, JavaScript, and other aspects like jQuery, SQL, and some other scripting languages. An experienced web developer is expected to have all the given aspects and great knowledge of design patterns.\n
+</string>
+
+    <string name="web2">\nThe advantages are:\n
+1. Data compression through HTTP headers.\n
+2. Ease of logical server push technology.\n
+3. Prioritizing a request.\n
+4. Page element loading through TCP connection.\n
+    </string>
+
+    <string name="web3">\nHTML stands for Hyper Text Markup Language. It is a language of World Wide Web. It is a standard text formatting language which is used to create and display pages on the Web. It makes the text more interactive and dynamic. It can turn text into images, tables, links.\n
+    </string>
+
+    <string name="web4">\nHTML tags are composed of three things: an opening tag, content and ending tag. Some tags are unclosed tags.\n
+HTML documents contain two things :\n
+1. content\n
+2. tags\n
+When a web browser reads an HTML document, the browser reads it from top to bottom and left to right. HTML tags are used to create HTML documents and render their properties. Each HTML tags have different properties.\n
+    </string>
+
+    <string name="web5">\nCSS stands for Cascading Style Sheet. It is a popular styling language which is used with HTML to design websites. It can also be used with any XML documents including plain XML, SVG, and XUL.\n
+    </string>
+
+    <string name="web6">\nSGML (Standard Generalized Markup Language) is the origin of CSS. It is a language that defines markup languages.\n
+    </string>
 
 </resources>

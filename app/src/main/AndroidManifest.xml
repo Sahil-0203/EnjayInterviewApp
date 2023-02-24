@@ -14,6 +14,16 @@
         android:theme="@style/Theme.EnjayInterviewApp"
         tools:targetApi="31">
         <activity
+            android:name=".Web_technical"
+            android:exported="false" />
+        <activity
+            android:name=".Ios_technical"
+            android:exported="false" />
+        <activity
+            android:name=".Android_technical"
+            android:exported="false" >
+        </activity>
+        <activity
             android:name=".PythonQuizResult"
             android:exported="false" />
         <activity
@@ -69,7 +79,8 @@
             android:exported="false" />
         <activity
             android:name=".TechnicalQuestion"
-            android:exported="false" />
+            android:exported="false" >
+        </activity>
         <activity
             android:name=".LogicalQuestion"
             android:exported="false" />
