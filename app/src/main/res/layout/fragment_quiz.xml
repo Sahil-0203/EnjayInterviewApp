@@ -234,15 +234,15 @@
                         android:layout_height="70dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="10dp"
-                        android:src="@drawable/clanguage" />
+                        android:src="@drawable/swift" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="43dp"
-                        android:text="C"
-                        android:textColor="#6599D1"
+                        android:text="Swift"
+                        android:textColor="#EF6932"
                         android:textSize="25dp"
                         android:textStyle="bold" />
                 </androidx.cardview.widget.CardView>
