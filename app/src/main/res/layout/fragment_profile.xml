@@ -6,6 +6,9 @@
     tools:context=".ProfileFragment"
     android:background="@color/background">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -135,6 +138,7 @@
             <Button
                 android:layout_width="140dp"
                 android:layout_height="wrap_content"
+                android:id="@+id/DeActivateAccount"
                 android:backgroundTint="#FF0000"
                 android:textColor="@color/white"
                 android:textStyle="bold"
@@ -145,4 +149,5 @@
 
     </LinearLayout>
 
+    </RelativeLayout>
 </ScrollView>

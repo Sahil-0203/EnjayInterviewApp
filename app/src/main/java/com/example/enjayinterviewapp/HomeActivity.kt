@@ -39,6 +39,8 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        replaceFragment(homeFragment)
 //-----------------------value retrieve from firebase-----------------------------------------------
 
 
@@ -48,7 +50,6 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         if (user != null){
             readData(user)
-
         }
 
 //--------------------------------------------------------------------------------------------------
@@ -75,7 +76,6 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setDisplayUseLogoEnabled(true)
 
-        replaceFragment(homeFragment)
 
         drawerLayout.addDrawerListener(toggle)
 
@@ -173,8 +173,8 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
             R.id.share ->
             {
-                val shareBody="Download nextQuiz on Play Store:"
-                val sharehub="nextQuiz : make brain powerful"
+                val shareBody="Download EnajyInterviewApp on Play Store:"
+                val sharehub="EnjayInterviewApp : make brain powerful"
                 val shareIntent=Intent(Intent.ACTION_SEND)
                 shareIntent.type="text/plain"
                 shareIntent.putExtra(Intent.EXTRA_SUBJECT,sharehub)
@@ -207,7 +207,6 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun onBackPressed() {
-
 
         builder.setTitle("Interview App")
             .setMessage("Do You Want To Exit ? ")
