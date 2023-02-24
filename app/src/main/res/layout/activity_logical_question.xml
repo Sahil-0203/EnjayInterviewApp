@@ -139,7 +139,7 @@
             android:background="@drawable/questionbackground"
             />
         <Button
-            android:id="@+id/btn_Aptitude"
+            android:id="@+id/btn_Logical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="SUBMIT"
