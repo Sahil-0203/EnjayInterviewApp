@@ -1,6 +1,6 @@
 package com.example.enjayinterviewapp
 
-data class CommomModelClass(val text:String)
+data class CommomModelClass(var que:String, var ans: Int)
 {
 
 }

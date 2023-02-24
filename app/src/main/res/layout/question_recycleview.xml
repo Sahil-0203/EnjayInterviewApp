@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="10dp"
     android:layout_marginTop="15dp"
-    android:layout_marginBottom="6dp"
+    android:layout_marginBottom="2dp"
     android:layout_marginHorizontal="20dp">
 
         <RelativeLayout
@@ -25,19 +25,8 @@
                 android:layout_marginTop="2dp"
                 />
 
-<!--            <android.widget.Button-->
-<!--                android:id="@+id/view_button"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="30dp"-->
-<!--                android:layout_marginLeft="10dp"-->
-<!--                android:background="@drawable/round_shape_button"-->
-<!--                android:text="view"-->
-<!--                android:layout_alignParentBottom="true"-->
-<!--                android:textColor="@color/white"-->
-<!--                android:layout_marginBottom="5dp"-->
-<!--                tools:ignore="TouchTargetSizeCheck" />-->
-
             <ImageView
+                android:id="@+id/imageview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
