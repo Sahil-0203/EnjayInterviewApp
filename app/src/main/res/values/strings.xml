@@ -282,6 +282,8 @@ For example, the Facebook start page where you enter your email/phone number and
     <string name="ios6">\nIt is said when it is not launched or gets terminated by the system while running.\n
     </string>
 
+    //web
+
     <string name="web1">\nA beginner web developer is expected to have a fundamental knowledge of HTML, CSS, JavaScript, and other aspects like jQuery, SQL, and some other scripting languages. An experienced web developer is expected to have all the given aspects and great knowledge of design patterns.\n
 </string>
 
