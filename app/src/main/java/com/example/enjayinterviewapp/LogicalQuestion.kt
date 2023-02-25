@@ -120,7 +120,8 @@ class LogicalQuestion : AppCompatActivity() , View.OnClickListener{
                         mcurrentPosition <= mquestionList!!.size -> {
                             setQuestion()
                         }else ->{
-                       startActivity(Intent(applicationContext,HomeActivity::class.java))
+                        val intent= Intent(this@LogicalQuestion, HomeActivity::class.java)
+                        startActivity(intent)
                     }
                     }
                 }else{

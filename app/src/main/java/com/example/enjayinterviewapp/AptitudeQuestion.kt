@@ -144,7 +144,7 @@ class AptitudeQuestion : AppCompatActivity(), View.OnClickListener {
                     if (mcurrentPosition ==mquestionList!!.size){
                         btn_nextQuestion.text="Finish"
                     }else{
-                        btn_nextQuestion.text="GO to Nex\t Question"
+                        btn_nextQuestion.text="GO to Next Question"
                     }
                     mSelectedOption =0
                 }

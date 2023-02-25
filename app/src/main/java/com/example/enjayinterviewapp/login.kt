@@ -14,6 +14,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatDelegate
 import com.example.enjayinterviewapp.databinding.ActivityLoginBinding
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
@@ -42,7 +43,11 @@ class login : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+//        night mode--------------------------------------------------------------------------------
 
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+
+//        ------------------------------------------------------------------------------------------
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
         callbackManager = CallbackManager.Factory.create()
