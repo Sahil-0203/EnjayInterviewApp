@@ -97,23 +97,23 @@ object LogicalConstants {
 //        que9
         val que9 =QuestionModel(
             9,
-            "",
-            "uncertain",
-            "true",
-            "false",
-            "None Of These",
-            3)
+            "Look at this series: 2, 1, (1/2), (1/4), ... What number should come next?",
+            "1/3",
+            "1/8",
+            "2/8",
+            "1/16",
+            2)
         questionList.add(que9)
 
 
 //        que10
         val que10 =QuestionModel(
             10,
-            "Mara runs faster than Gail,Lily runs faster than Mara,Gail runs faster than Lily,If the first two statements are true, the third statement is",
-            "uncertain",
-            "true",
-            "false",
-            "None Of These",
+            "Look at this series: 2, 6, 18, 54, ... What number should come next?",
+            "108",
+            "148",
+            "162",
+            "216",
             3)
         questionList.add(que10)
         return questionList

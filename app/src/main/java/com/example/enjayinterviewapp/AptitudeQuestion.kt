@@ -1,6 +1,7 @@
 package com.example.enjayinterviewapp
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +13,9 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import com.example.enjayinterviewapp.databinding.ActivityAptitudeQuestionBinding
 
 class AptitudeQuestion : AppCompatActivity(), View.OnClickListener {
@@ -123,7 +127,11 @@ class AptitudeQuestion : AppCompatActivity(), View.OnClickListener {
                         mcurrentPosition <= mquestionList!!.size -> {
                             setQuestion()
                         }else ->{
-                            Toast.makeText(applicationContext,"completequiz",Toast.LENGTH_SHORT).show()
+
+                        val intent= Intent(this@AptitudeQuestion, HomeActivity::class.java)
+                        startActivity(intent)
+
+
                         }
                     }
                 }else{
@@ -136,7 +144,7 @@ class AptitudeQuestion : AppCompatActivity(), View.OnClickListener {
                     if (mcurrentPosition ==mquestionList!!.size){
                         btn_nextQuestion.text="Finish"
                     }else{
-                        btn_nextQuestion.text="GO to Next Question"
+                        btn_nextQuestion.text="GO to Nex\t Question"
                     }
                     mSelectedOption =0
                 }
@@ -172,6 +180,7 @@ class AptitudeQuestion : AppCompatActivity(), View.OnClickListener {
         }
 
     }
+
     private fun SelectedOptionView(tv:TextView,selectedOption:Int){
 
         defaultOptionView()

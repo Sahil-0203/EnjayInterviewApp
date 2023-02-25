@@ -400,7 +400,7 @@ class PhpQuestion : AppCompatActivity()
         builder.setView(view)
 
         val timeOverOk = view.findViewById<Button>(R.id.timeOver_ok)
-        var alertDialog = builder.create()
+        val alertDialog = builder.create()
 
         timeOverOk.setOnClickListener {
             timeLeftMilliSeconds = countDownInMilliSecond
