@@ -1,6 +1,7 @@
 package com.example.enjayinterviewapp
 
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
@@ -119,7 +120,7 @@ class LogicalQuestion : AppCompatActivity() , View.OnClickListener{
                         mcurrentPosition <= mquestionList!!.size -> {
                             setQuestion()
                         }else ->{
-                        Toast.makeText(applicationContext,"completequiz", Toast.LENGTH_SHORT).show()
+                       startActivity(Intent(applicationContext,HomeActivity::class.java))
                     }
                     }
                 }else{
