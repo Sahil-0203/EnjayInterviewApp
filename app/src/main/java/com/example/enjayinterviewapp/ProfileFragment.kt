@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -36,7 +37,9 @@ class ProfileFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
+
     ): View? {
+
         // Inflate the layout for this fragment
         val view= inflater.inflate(R.layout.fragment_profile, container, false)
 
@@ -51,7 +54,6 @@ class ProfileFragment : Fragment() {
         val Deactivate=view?.findViewById<Button>(R.id.DeActivateAccount)
 
 //        ------------------------------------------------------------------------------------------
-
 
 
 //        ------------------------------------------------------------------------------------------
@@ -130,7 +132,7 @@ class ProfileFragment : Fragment() {
                 val Emailid=it.child("email").value
                 val Dob=it.child("date").value
 
-                Toast.makeText(activity,"SuccessFul",Toast.LENGTH_SHORT).show()
+//                Toast.makeText(activity,"SuccessFul",Toast.LENGTH_SHORT).show()
 
                 val nameTextView=view?.findViewById<TextView>(R.id.nameTextview)
                 val contactTextview=view?.findViewById<TextView>(R.id.contactTextview)

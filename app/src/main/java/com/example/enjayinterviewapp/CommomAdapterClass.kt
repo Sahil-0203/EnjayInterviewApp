@@ -3,7 +3,7 @@ package com.example.enjayinterviewapp
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
+import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
@@ -13,8 +13,7 @@ class CommomAdapterClass(private val list: List<CommomModelClass>) : RecyclerVie
     inner class ViewHolder(itemview:View):RecyclerView.ViewHolder(itemview)
     {
         val textView=itemView.findViewById<TextView>(R.id.question_text)
-        //val textView1=itemView.findViewById<TextView>(R.id.text_answer)
-        val imageView=itemView.findViewById<ImageView>(R.id.imageview)
+        val button=itemView.findViewById<Button>(R.id.view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int)
@@ -23,7 +22,7 @@ class CommomAdapterClass(private val list: List<CommomModelClass>) : RecyclerVie
 
         holder.textView.text=CommomModelClass.que
 
-        holder.imageView.setOnClickListener {v->
+        holder.button.setOnClickListener {v->
 
             val builder=AlertDialog.Builder(v.rootView.context)
             val dialogView=LayoutInflater.from(v.rootView.context).inflate(R.layout.custom_dialog_box,null)

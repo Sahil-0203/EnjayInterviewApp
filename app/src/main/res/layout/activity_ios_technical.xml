@@ -3,27 +3,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CommonQuestion"
+    tools:context=".Ios_technical"
     android:orientation="vertical"
     android:background="@color/bg">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/common_interview_question"
+        android:text="IOS QUESTIONS"
         android:textColor="@color/white"
-        android:textSize="23dp"
-        android:background="#1F357A"
-        android:textStyle="bold"
+        android:textSize="30dp"
         android:gravity="center"
+        android:textStyle="bold"
+        android:background="#1F357A"
         />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="23dp"
-        android:layout_marginBottom="15dp"
-        tools:listitem="@layout/question_recycleview" />
+        tools:listitem="@layout/question_recycleview"
+        />
 
 </LinearLayout>
