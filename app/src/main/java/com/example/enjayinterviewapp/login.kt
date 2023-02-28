@@ -1,19 +1,21 @@
 package com.example.enjayinterviewapp
 
-import android.annotation.SuppressLint
-import android.app.Activity
+
 import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.util.Patterns
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import android.widget.ProgressBar
+import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatDelegate
 import com.example.enjayinterviewapp.databinding.ActivityLoginBinding
 import com.facebook.CallbackManager
@@ -21,23 +23,14 @@ import com.facebook.FacebookCallback
 import com.facebook.FacebookException
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.tasks.Task
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.GoogleAuthProvider
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.ktx.Firebase
-import java.util.*
 
 class login : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
-    private lateinit var database:DatabaseReference
+//    private lateinit var database:DatabaseReference
     private lateinit var auth: FirebaseAuth
-    private lateinit var googleSignInClient:GoogleSignInClient
+//    private lateinit var googleSignInClient:GoogleSignInClient
     var callbackManager: CallbackManager? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,6 +45,10 @@ class login : AppCompatActivity() {
         setContentView(binding.root)
         callbackManager = CallbackManager.Factory.create()
 
+        val progressBar=findViewById<ProgressBar>(R.id.progressbar)
+
+
+        progressBar.visibility=View.GONE
 //        ------------------------------------------------------------------------------------------
 
         LoginManager.getInstance().registerCallback(callbackManager,
@@ -108,7 +105,6 @@ class login : AppCompatActivity() {
 
         binding.logMain.setOnClickListener {
 
-
             val fName=findViewById<TextInputEditText>(R.id.UserEditText)
 
             val e=fName.text.toString()
@@ -117,6 +113,24 @@ class login : AppCompatActivity() {
                 val abc: InputMethodManager =
                     getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 abc.showSoftInput(fName, InputMethodManager.SHOW_IMPLICIT)
+            }
+            else
+            {
+                val builder=AlertDialog.Builder(this@login)
+
+                val progressBar=ProgressBar(this@login)
+                progressBar.isIndeterminate=true
+                builder.setView(progressBar)
+
+
+                val dialog=builder.create()
+                dialog.show()
+
+
+                Handler().postDelayed({ // Hide the progress bar
+                    progressBar.visibility = View.GONE
+                    Handler().postDelayed({ dialog.dismiss() }, 1000)
+                }, 3000)
             }
 
             submitForm()
@@ -217,8 +231,9 @@ class login : AppCompatActivity() {
             val email=LoginEmail.text.toString()
             val password=Loginpassword.text.toString()
 
-
             auth.signInWithEmailAndPassword(email,password).addOnCompleteListener{
+
+
                 if (it.isSuccessful){
                     intent= Intent(applicationContext,HomeActivity::class.java)
                     startActivity(intent)
@@ -226,12 +241,6 @@ class login : AppCompatActivity() {
                     Toast.makeText(this,"Wrong Password or Email ID", Toast.LENGTH_SHORT).show()
                 }
             }
-
-
-
-
-
-
         }
         else
         {

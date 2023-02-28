@@ -155,7 +155,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.applynow ->
             {
 
-                val uri=Uri.parse("https://www.enjayworld.com/contact/?")
+                val uri=Uri.parse("https://www.enjayworld.com/careers/")
                 val apply=Intent(Intent.ACTION_VIEW,uri)
                 startActivity(apply)
                 Toast.makeText(this, "Redirecting...", Toast.LENGTH_SHORT).show()

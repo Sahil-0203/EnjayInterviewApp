@@ -1,7 +1,6 @@
 package com.example.enjayinterviewapp
 
 import android.annotation.SuppressLint
-import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -9,17 +8,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.Window
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.core.view.isGone
-import androidx.core.view.isVisible
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.collection.LLRBNode.Color
 
 class ProfileFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
@@ -124,7 +121,9 @@ class ProfileFragment : Fragment() {
 
             database.child(user.toString()).get().addOnSuccessListener {
 
+                val progressbar=view?.findViewById<ProgressBar>(R.id.progressbar)
 
+                progressbar!!.visibility=View.VISIBLE
 
                 Log.e( "readData: ", it.toString())
                 val firstname=it.child("fname").value
@@ -145,16 +144,13 @@ class ProfileFragment : Fragment() {
                 dobTextview?.text=Dob.toString()
                 if (it.exists()){
 
-
-
+                    progressbar!!.visibility=View.GONE
                 }else {
                     Toast.makeText(activity,"User Doesn't Exists",Toast.LENGTH_SHORT).show()
                 }
             }.addOnFailureListener {
                 Toast.makeText(activity,"Failed",Toast.LENGTH_SHORT).show()
             }
-
-
 
         return view
     }
