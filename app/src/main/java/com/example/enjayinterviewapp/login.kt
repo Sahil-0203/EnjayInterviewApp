@@ -165,6 +165,8 @@ class login : AppCompatActivity() {
             .addOnCompleteListener { task ->
                 if (task.isSuccessful){
                     Toast.makeText(this,"Email Sent", Toast.LENGTH_SHORT).show()
+                }else{
+                    Toast.makeText(this,"Failed to send Email", Toast.LENGTH_SHORT).show()
                 }
             }
     }

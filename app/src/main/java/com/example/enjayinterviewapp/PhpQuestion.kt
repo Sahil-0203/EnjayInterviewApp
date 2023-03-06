@@ -420,7 +420,7 @@ class PhpQuestion : AppCompatActivity()
 
         else
         {
-            backToast = Toast.makeText(baseContext, "DOUBLE PRESS TO QUIT Quiz", Toast.LENGTH_SHORT)
+            backToast = Toast.makeText(baseContext, "DOUBLE PRESS TO QUIT", Toast.LENGTH_SHORT)
             backToast?.show()
         }
         backPressedTime = System.currentTimeMillis()

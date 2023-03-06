@@ -32,8 +32,8 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private lateinit var binding: ActivityHomeBinding
     private lateinit var toggle: ActionBarDrawerToggle
     private lateinit var auth: FirebaseAuth
-    lateinit var database: DatabaseReference
-    lateinit var drawerLayout: DrawerLayout
+    private lateinit var database: DatabaseReference
+    private lateinit var drawerLayout: DrawerLayout
     private lateinit var builder:AlertDialog.Builder
     private lateinit var user: FirebaseUser
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -84,9 +84,6 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawerLayout.addDrawerListener(toggle)
 
 
-
-
-
         binding.bottomNavigation.setOnItemSelectedListener{ item ->
 
             when (item.itemId)
@@ -109,18 +106,16 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             val Phone=it.child("mobile").value
 
 
-            Toast.makeText(this,"SuccessFul",Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this,"SuccessFul",Toast.LENGTH_SHORT).show()
 
             val nameTextView=findViewById<TextView>(R.id.name)
             val contactTextview=findViewById<TextView>(R.id.contact)
 
 
-            nameTextView?.text=firstname.toString()
-            contactTextview?.text=Phone.toString()
-
             if (it.exists()){
 
-
+                nameTextView?.text=firstname.toString()
+                contactTextview?.text=Phone.toString()
 
             }else {
                 Toast.makeText(this,"User Doesn't Exists",Toast.LENGTH_SHORT).show()
@@ -201,7 +196,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                         dialogInterface.cancel()
                     }
                 val alertDialog = builder.create()
-                // Show the Alert Dialog box
+    //-------------------- Show the Alert Dialog box------------------------------------------------
                 alertDialog.show()
 
             }
@@ -211,6 +206,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun onBackPressed() {
+
 
         builder.setTitle("Interview App")
             .setMessage("Do You Want To Exit ? ")

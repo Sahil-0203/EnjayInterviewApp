@@ -60,7 +60,6 @@ class Update_Firebase : AppCompatActivity() {
             database.child(uid).updateChildren(user).addOnSuccessListener {
                 startActivity(Intent(applicationContext,HomeActivity::class.java))
                 finish()
-                Toast.makeText(applicationContext,"successful",Toast.LENGTH_SHORT).show()
             }.addOnFailureListener {
                 Toast.makeText(applicationContext,"Failed",Toast.LENGTH_SHORT).show()
             }

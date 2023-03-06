@@ -6,16 +6,11 @@ import android.graphics.Color
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
-import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import com.example.enjayinterviewapp.databinding.ActivityAptitudeQuestionBinding
 
 class AptitudeQuestion : AppCompatActivity(), View.OnClickListener {
@@ -23,6 +18,10 @@ class AptitudeQuestion : AppCompatActivity(), View.OnClickListener {
    private var mcurrentPosition:Int=1
     private var mquestionList:ArrayList<QuestionModel>?=null
     private var mSelectedOption:Int=0
+
+    private var backPressedTime: Long = 0
+    private var backToast: Toast? = null
+
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -191,5 +190,23 @@ class AptitudeQuestion : AppCompatActivity(), View.OnClickListener {
         tv.background=ContextCompat.getDrawable(
             this,R.drawable.selected_option_border
         )
+    }
+
+    override fun onBackPressed() {
+
+        if (backPressedTime + 2000 > System.currentTimeMillis())
+        {
+            backToast?.cancel()
+            finish()
+
+        }
+
+        else
+        {
+            backToast = Toast.makeText(baseContext, "DOUBLE PRESS TO QUIT", Toast.LENGTH_SHORT)
+            backToast?.show()
+
+        }
+        backPressedTime = System.currentTimeMillis()
     }
 }
