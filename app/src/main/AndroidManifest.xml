@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 
     <application
         android:allowBackup="true"
@@ -14,88 +16,116 @@
         android:theme="@style/Theme.EnjayInterviewApp"
         tools:targetApi="31">
         <activity
-            android:name=".Web_technical"
-            android:exported="false" />
+            android:name="Home.Technical.Web_technical"
+            android:exported="false"
+            />
         <activity
-            android:name=".Ios_technical"
-            android:exported="false" />
+            android:name="Home.Technical.Ios_technical"
+            android:exported="false"
+            />
         <activity
-            android:name=".Android_technical"
-            android:exported="false" >
+            android:name="Home.Technical.Android_technical"
+            android:exported="false"
+            >
         </activity>
         <activity
             android:name=".PythonQuizResult"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
-            android:name=".JavaQuizResult"
-            android:exported="false" />
+            android:name="Result.JavaQuizResult"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".JavaResult"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
-            android:name=".AboutUS"
-            android:exported="false" />
+            android:name="AboutUS.AboutUS"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
-            android:name=".Update_Firebase"
-            android:exported="false" />
+            android:name="credentials.Update_Firebase"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
-            android:name=".CplusQuestion"
-            android:exported="false" />
+            android:name="QuizQuestion.CplusQuestion"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
-            android:name=".CQuestion"
-            android:exported="false" />
+            android:name="QuizQuestion.CQuestion"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
-            android:name=".KotlinQuestion"
-            android:exported="false" />
+            android:name="QuizQuestion.KotlinQuestion"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
-            android:name=".PhpQuestion"
-            android:exported="false" />
+            android:name="QuizQuestion.PhpQuestion"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
-            android:name=".PythonQuestion"
-            android:exported="false" />
+            android:name="QuizQuestion.PythonQuestion"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
-            android:name=".Result_Activity"
-            android:exported="false" />
+            android:name="Result.Result_Activity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
-            android:name=".JavaQuestion"
-            android:exported="false" />
+            android:name="QuizQuestion.JavaQuestion"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
-            android:name=".CQuiz"
-            android:exported="false" />
+            android:name="Quiz.CQuiz"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
-            android:name=".CplusQuiz"
-            android:exported="false" />
+            android:name="Quiz.CplusQuiz"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
-            android:name=".KotlinQuiz"
-            android:exported="false" />
+            android:name="Quiz.KotlinQuiz"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
-            android:name=".PhpQuiz"
-            android:exported="false" />
+            android:name="Quiz.PhpQuiz"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
-            android:name=".PythonQuiz"
-            android:exported="false" />
+            android:name="Quiz.PythonQuiz"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
-            android:name=".JavaQuiz"
-            android:exported="false" />
+            android:name="Quiz.JavaQuiz"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
-            android:name=".TechnicalQuestion"
-            android:exported="false" >
+            android:name="Home.TechnicalQuestion"
+            android:exported="false"
+            >
         </activity>
         <activity
-            android:name=".LogicalQuestion"
-            android:exported="false" />
+            android:name="Home.LogicalQuestion"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
-            android:name=".CommonQuestion"
-            android:exported="false" />
+            android:name="Home.CommonQuestion"
+            android:exported="false"
+            />
         <activity
-            android:name=".AptitudeQuestion"
-            android:exported="false" />
+            android:name="Home.AptitudeQuestion"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".HomeActivity"
-            android:exported="false" />
+            android:exported="false"
+            />
         <activity
-            android:name=".Register_page"
-            android:exported="false" />
+            android:name="credentials.Register_page"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -122,11 +152,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".login"
-            android:exported="false" />
+            android:name="credentials.login"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:name="credentials.MainActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
