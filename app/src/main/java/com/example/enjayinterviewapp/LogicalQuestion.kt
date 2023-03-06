@@ -19,6 +19,11 @@ class LogicalQuestion : AppCompatActivity() , View.OnClickListener{
     private var mcurrentPosition:Int=1
     private var mquestionList:ArrayList<QuestionModel>?=null
     private var mSelectedOption:Int=0
+
+
+    private var backPressedTime: Long = 0
+    private var backToast: Toast? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding=ActivityLogicalQuestionBinding.inflate(layoutInflater)
@@ -179,5 +184,22 @@ class LogicalQuestion : AppCompatActivity() , View.OnClickListener{
         tv.background=ContextCompat.getDrawable(
             this,R.drawable.selected_option_border
         )
+    }
+    override fun onBackPressed() {
+
+        if (backPressedTime + 2000 > System.currentTimeMillis())
+        {
+            backToast?.cancel()
+            finish()
+
+        }
+
+        else
+        {
+            backToast = Toast.makeText(baseContext, "DOUBLE PRESS TO QUIT", Toast.LENGTH_SHORT)
+            backToast?.show()
+
+        }
+        backPressedTime = System.currentTimeMillis()
     }
 }

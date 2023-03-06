@@ -132,7 +132,6 @@ class ProfileFragment : Fragment() {
                 val Emailid=it.child("email").value
                 val Dob=it.child("date").value
 
-//                Toast.makeText(activity,"SuccessFul",Toast.LENGTH_SHORT).show()
 
                 val nameTextView=view?.findViewById<TextView>(R.id.nameTextview)
                 val contactTextview=view?.findViewById<TextView>(R.id.contactTextview)
