@@ -1,15 +1,19 @@
 package Home
 
 import AdapterClass.CommomAdapterClass
+import InternetConnection.NetworkChangedListener
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ModelClass.CommomModelClass
+import android.content.IntentFilter
+import android.net.ConnectivityManager
 import com.example.enjayinterviewapp.R
 
 class CommonQuestion : AppCompatActivity()
 {
+
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)

@@ -1,6 +1,7 @@
 package credentials
 
 
+import InternetConnection.NetworkChangedListener
 import ModelClass.User
 import android.annotation.SuppressLint
 import android.app.AlertDialog
@@ -8,7 +9,9 @@ import android.app.DatePickerDialog
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.content.IntentFilter
 import android.graphics.Color
+import android.net.ConnectivityManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -39,6 +42,8 @@ class login : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
 //    private lateinit var googleSignInClient:GoogleSignInClient
     var callbackManager: CallbackManager? = null
+
+    var networkChangedListener=NetworkChangedListener()
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -605,5 +610,15 @@ class login : AppCompatActivity() {
         callbackManager!!.onActivityResult(requestCode, resultCode, data)
         super.onActivityResult(requestCode, resultCode, data)
     }
-
+    override fun onStart()
+    {
+        var intentFilter= IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION)
+        registerReceiver(networkChangedListener,intentFilter)
+        super.onStart()
+    }
+    override fun onStop()
+    {
+        unregisterReceiver(networkChangedListener)
+        super.onStop()
+    }
 }

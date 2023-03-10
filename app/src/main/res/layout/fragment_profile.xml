@@ -283,7 +283,7 @@
             <Button
 
                 android:id="@+id/update"
-                android:layout_width="140dp"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:text="Update"
                 android:textColor="@color/white"
@@ -292,7 +292,7 @@
                 />
 
             <Button
-                android:layout_width="140dp"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/DeActivateAccount"
                 android:backgroundTint="#FF0000"
