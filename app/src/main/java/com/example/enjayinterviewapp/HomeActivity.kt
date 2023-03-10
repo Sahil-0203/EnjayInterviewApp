@@ -69,13 +69,13 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val navigationView=findViewById<NavigationView>(R.id.navigationView)
 
 
+
         setSupportActionBar(toolbar)
 
 
         toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.Open, R.string.Close)
         drawerLayout.addDrawerListener(toggle)
         toggle.isDrawerIndicatorEnabled=true
-
         toggle.syncState()
 
 

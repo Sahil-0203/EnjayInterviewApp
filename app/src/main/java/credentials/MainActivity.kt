@@ -25,16 +25,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-        if (!isNetworkAvailable == true) {
-            AlertDialog.Builder(this)
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .setTitle("Internet Connection Alert")
-                .setMessage("Please Check Your Internet Connection")
-                .setPositiveButton(
-                    "Close"
-                ) { dialogInterface, i -> finish() }.show()
-        } else if (isNetworkAvailable == true) {
-
 
 
 
@@ -58,27 +48,6 @@ class MainActivity : AppCompatActivity() {
             )
 
         }
-    }
 
-    val isNetworkAvailable: Boolean
-        get() {
-            val connectivityManager =
-                getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-            if (connectivityManager != null) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                    val capabilities =
-                        connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
-                    if (capabilities != null) {
-                        if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)) {
-                            return true
-                        } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
-                            return true
-                        } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET)) {
-                            return true
-                        }
-                    }
-                }
-            }
-            return false
-        }
+
 }
