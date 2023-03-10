@@ -1,5 +1,9 @@
 package com.example.enjayinterviewapp
 
+import AboutUS.AboutUS
+import Home.HomeFragment
+import Profile.ProfileFragment
+import Quiz.QuizFragment
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -23,8 +27,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import credentials.login
 
-private val homeFragment=HomeFragment()
+private val homeFragment= HomeFragment()
 
 
 class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -163,7 +168,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
             R.id.aboutus ->
             {
-                startActivity(Intent(this,AboutUS::class.java))
+                startActivity(Intent(this, AboutUS::class.java))
                 finish()
             }
             R.id.rateus ->
@@ -188,7 +193,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     .setCancelable(false)
                     .setPositiveButton("Yes"){dialogInterface,it ->
                         auth.signOut()
-                        intent= Intent(applicationContext,login::class.java)
+                        intent= Intent(applicationContext, login::class.java)
                         startActivity(intent)
                         finish()
                     }
