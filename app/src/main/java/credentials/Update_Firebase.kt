@@ -1,12 +1,17 @@
 package credentials
 
+import InternetConnection.NetworkChangedListener
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.IntentFilter
+import android.net.ConnectivityManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import com.example.enjayinterviewapp.HomeActivity
@@ -19,6 +24,7 @@ class Update_Firebase : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var database:DatabaseReference
 
+    var networkChangedListener=NetworkChangedListener()
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,8 +78,13 @@ class Update_Firebase : AppCompatActivity() {
 
         database= FirebaseDatabase.getInstance().getReference("Users")
 
+        val progressBar=findViewById<ProgressBar>(R.id.progressbar)
+
+        progressBar.visibility=View.VISIBLE
+
         database.child(user).get().addOnSuccessListener {
 
+            progressBar.visibility=View.GONE
             Log.e( "readData: ", it.toString())
             val firstname=it.child("fname").value
             val Phone=it.child("mobile").value
@@ -96,6 +107,18 @@ class Update_Firebase : AppCompatActivity() {
         }.addOnFailureListener {
             Toast.makeText(this,"Failed", Toast.LENGTH_SHORT).show()
         }
+    }
 
+    override fun onStart()
+    {
+        var intentFilter=IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION)
+        registerReceiver(networkChangedListener,intentFilter)
+        super.onStart()
+    }
+
+    override fun onStop()
+    {
+        unregisterReceiver(networkChangedListener)
+        super.onStop()
     }
 }
