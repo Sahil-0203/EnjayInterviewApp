@@ -13,7 +13,10 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.example.enjayinterviewapp.HomeActivity
 import ConstantsQuestion.LogicalConstants
+import InternetConnection.NetworkChangedListener
 import ModelClass.QuestionModel
+import android.content.IntentFilter
+import android.net.ConnectivityManager
 import com.example.enjayinterviewapp.R
 import com.example.enjayinterviewapp.databinding.ActivityLogicalQuestionBinding
 

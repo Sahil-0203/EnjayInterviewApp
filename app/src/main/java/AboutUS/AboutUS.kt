@@ -20,8 +20,6 @@ class AboutUS : AppCompatActivity() {
         webView.loadUrl("https://www.enjayworld.com/about/?")
         webView.settings.javaScriptEnabled = true
 
-
-
     }
 
     override fun onBackPressed() {

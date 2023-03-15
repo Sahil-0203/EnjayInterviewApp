@@ -1,5 +1,6 @@
 package credentials
 
+import InternetConnection.NetworkChangedListener
 import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Intent
@@ -9,6 +10,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.enjayinterviewapp.R
 import ModelClass.User
+import android.content.IntentFilter
+import android.net.ConnectivityManager
 import com.example.enjayinterviewapp.databinding.ActivityRegisterPageBinding
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth

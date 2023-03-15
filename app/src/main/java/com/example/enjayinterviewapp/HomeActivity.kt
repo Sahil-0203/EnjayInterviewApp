@@ -2,9 +2,12 @@ package com.example.enjayinterviewapp
 
 import AboutUS.AboutUS
 import Home.HomeFragment
+import InternetConnection.NetworkChangedListener
 import Profile.ProfileFragment
 import Quiz.QuizFragment
 import android.content.Intent
+import android.content.IntentFilter
+import android.net.ConnectivityManager
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -41,6 +44,8 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var builder:AlertDialog.Builder
     private lateinit var user: FirebaseUser
+
+    var networkChangedListener=NetworkChangedListener()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
@@ -225,6 +230,19 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val alertDialog = builder.create()
         // Show the Alert Dialog box
         alertDialog.show()
+    }
+
+    override fun onStart()
+    {
+        var intentFilter=IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION)
+        registerReceiver(networkChangedListener,intentFilter)
+        super.onStart()
+    }
+
+    override fun onStop()
+    {
+        unregisterReceiver(networkChangedListener)
+        super.onStop()
     }
 }
 

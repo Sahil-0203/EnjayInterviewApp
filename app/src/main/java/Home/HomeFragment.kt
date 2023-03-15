@@ -1,8 +1,11 @@
 package Home
 
 import AdapterClass.CustomAdapterRecyclerView
+import InternetConnection.NetworkChangedListener
 import ModelClass.ModelClassRecyclerView
 import android.content.Intent
+import android.content.IntentFilter
+import android.net.ConnectivityManager
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -15,7 +18,6 @@ import com.example.enjayinterviewapp.R
 
 
 class HomeFragment : Fragment(), CustomAdapterRecyclerView.MyClickListner {
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,7 +60,5 @@ class HomeFragment : Fragment(), CustomAdapterRecyclerView.MyClickListner {
             else -> Toast.makeText(activity,"error in intent", Toast.LENGTH_SHORT).show()
         }
     }
-
-
 }
 
