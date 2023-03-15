@@ -1,5 +1,6 @@
 package QuizQuestion
 
+import Home.SQLiteHelper
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.res.ColorStateList
@@ -38,6 +39,8 @@ class JavaQuestion : AppCompatActivity()            //error
     private var backPressedTime: Long = 0
     private var backToast: Toast? = null
 
+
+
     private var questions = arrayOf(
         "Q.1. Number of primitive data types in Java?",
         "Q.2. What is the size of float and double in Java?",
@@ -75,6 +78,7 @@ class JavaQuestion : AppCompatActivity()            //error
         "Q.24. Which permits the removal of elements from a collection?",
         "Q.25. The Comparator interface contains the method?,"
     )
+
 
     private var answer = arrayOf(
         "8",            //1
@@ -207,11 +211,15 @@ class JavaQuestion : AppCompatActivity()            //error
         "compare"           //25
     )
 
+    @SuppressLint("Range")
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
         activityJavaQuestion=ActivityJavaQuestionBinding.inflate(layoutInflater)
         setContentView(activityJavaQuestion.root)
+
+
+
 
         initViews()
     }
@@ -329,7 +337,7 @@ class JavaQuestion : AppCompatActivity()            //error
     {
         countDownTimer = object : CountDownTimer(timeLeftMilliSeconds, countDownInterval)
         {
-            override fun onTick(millisUntilFinished: Long)
+               override fun onTick(millisUntilFinished: Long)
             {
 
                 activityJavaQuestion.apply {

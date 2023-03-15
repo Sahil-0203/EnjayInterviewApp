@@ -309,8 +309,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:indeterminateDrawable="@drawable/progressbar_bg"
-            />
+            android:indeterminateDrawable="@drawable/progressbar_bg" />
 
     </RelativeLayout>
 

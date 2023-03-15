@@ -1,6 +1,7 @@
 package Profile
 
 import android.annotation.SuppressLint
+import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -14,6 +15,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.enjayinterviewapp.R
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -116,7 +118,7 @@ class ProfileFragment : Fragment() {
     @SuppressLint("SuspiciousIndentation")
     private fun readData(user: String?): View? {
 
-
+        val parentLayout=view?.findViewById<View>(android.R.id.content)
 
 
         database=FirebaseDatabase.getInstance().getReference("Users")
@@ -124,6 +126,7 @@ class ProfileFragment : Fragment() {
             database.child(user.toString()).get().addOnSuccessListener {
 
                 val progressbar=view?.findViewById<ProgressBar>(R.id.progressbar)
+
 
                 progressbar?.visibility=View.VISIBLE
 
@@ -150,7 +153,18 @@ class ProfileFragment : Fragment() {
                     Toast.makeText(activity,"User Doesn't Exists",Toast.LENGTH_SHORT).show()
                 }
             }.addOnFailureListener {
-                Toast.makeText(activity,"Failed",Toast.LENGTH_SHORT).show()
+                val prog=view?.findViewById<ProgressBar>(R.id.progressbar)
+                prog?.visibility=View.GONE
+                try {
+                    Toast.makeText(activity,"Server Down",Toast.LENGTH_SHORT).show()
+                }
+                catch (e:Exception)
+                {
+
+                    Log.e("profileeee", "readData.>>>>: $e" )
+                }
+
+
             }
 
         return view

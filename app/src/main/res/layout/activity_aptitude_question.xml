@@ -40,44 +40,12 @@
             android:textColor="@android:color/white"
             android:textSize="18dp"
             android:textStyle="bold" />
-        <LinearLayout
-            android:id="@+id/Layout_bar"
-            android:layout_below="@+id/Aptitudequestion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:gravity="center_vertical"
-            android:layout_marginHorizontal="20dp"
-            android:orientation="horizontal">
-            <ProgressBar
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/aptitude_progress"
-                android:progressBackgroundTint="@color/white"
-                android:layout_weight="1"
-                android:max="20"
-                android:minHeight="50dp"
-                android:progress="0"
-                android:indeterminate="false"
-                style="?android:attr/progressBarStyleHorizontal"
 
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/tv_progress"
-                android:gravity="center"
-                android:padding="15dp"
-                android:textColor="@color/white"
-                android:textSize="14sp"
-                android:text="0/20"/>
-
-        </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/Layout_bar"
+            android:layout_below="@id/Aptitudequestion"
             android:id="@+id/tv_option1"
             android:text="option 1"
             android:textSize="17dp"
@@ -142,7 +110,7 @@
             android:id="@+id/btn_Aptitude"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="SUBMIT"
+            android:text="Go To Next Question"
             android:backgroundTint="@color/toolBarColor"
             android:layout_below="@+id/tv_option4"
             android:layout_marginHorizontal="20dp"

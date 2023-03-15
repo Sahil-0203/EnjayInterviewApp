@@ -23,6 +23,21 @@
             app:cardElevation="10dp"
             app:cardUseCompatPadding="true">
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ProgressBar
+                    android:id="@+id/progressbarlogin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:visibility="gone"
+                    android:layout_marginTop="245dp"
+
+                    android:indeterminateDrawable="@drawable/progressbar_bg" />
+            </RelativeLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -97,7 +112,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="textEmailAddress"
-                            android:maxLength="30" />
+                            android:maxLength="50" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -321,6 +336,7 @@
 
 
         </androidx.cardview.widget.CardView>
+
 
     </RelativeLayout>
 

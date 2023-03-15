@@ -2,9 +2,12 @@ package com.example.enjayinterviewapp
 
 import AboutUS.AboutUS
 import Home.HomeFragment
+import Home.SQLiteHelper
 import InternetConnection.NetworkChangedListener
 import Profile.ProfileFragment
 import Quiz.QuizFragment
+import android.content.ContentValues
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.IntentFilter
 import android.net.ConnectivityManager
@@ -24,15 +27,18 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
 import com.example.enjayinterviewapp.databinding.ActivityHomeBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import credentials.login
 
-private val homeFragment= HomeFragment()
 
 
 class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -41,6 +47,8 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private lateinit var toggle: ActionBarDrawerToggle
     private lateinit var auth: FirebaseAuth
     private lateinit var database: DatabaseReference
+    private lateinit var database2: DatabaseReference
+    private lateinit var database3: DatabaseReference
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var builder:AlertDialog.Builder
     private lateinit var user: FirebaseUser
@@ -53,7 +61,14 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
               AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
-        replaceFragment(homeFragment)
+
+
+        replaceFragment(HomeFragment())
+//  ------------------------------question get from api to sqlite-----------------------------------
+
+        getQuestion()
+
+//        -------------------------------finish get question----------------------------------------
 
 //-----------------------value retrieve from firebase-----------------------------------------------
 
@@ -94,7 +109,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawerLayout.addDrawerListener(toggle)
 
 
-        binding.bottomNavigation.setOnItemSelectedListener{ item ->
+        binding.bottomNavigation.setOnItemSelectedListener { item ->
 
             when (item.itemId)
             {
@@ -104,6 +119,142 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
             true
         }
+
+    }
+
+
+    private fun replaceFragment(fragment: Fragment) {
+
+        val FragmentManager=supportFragmentManager
+        val FragmentTransaction=FragmentManager.beginTransaction()
+        FragmentTransaction.replace(R.id.framelayout,fragment)
+        FragmentTransaction.commit()
+    }
+
+    private fun getQuestion() {
+
+        database= FirebaseDatabase.getInstance().getReference("AptitudeQuestion")
+        database2=FirebaseDatabase.getInstance().getReference("LogicalQuestion")
+        database3=FirebaseDatabase.getInstance().getReference("CommonQuestion")
+
+        database.get().addOnSuccessListener {
+            for (DataSnap in it.children ){
+
+
+                val questionReal=DataSnap.child("question").value.toString()
+                val option1Real=DataSnap.child("option1").value.toString()
+                val option2Real=DataSnap.child("option2").value.toString()
+                val option3Real=DataSnap.child("option3").value.toString()
+                val option4Real=DataSnap.child("option4").value.toString()
+                val answerReal=DataSnap.child("answer").value.toString().toInt()
+
+//                Log.e("asd", "getQuestion: ${answerReal}", )
+
+
+//      store value in sqlite-----------------------------------------------------------------------
+
+                val helper=SQLiteHelper(applicationContext)
+                val db=helper.readableDatabase
+                var cursor=db.rawQuery("SELECT * FROM tblQuestion WHERE question =?", arrayOf(questionReal.toString()))
+                val exists=cursor.moveToNext()
+                cursor.close()
+
+                if (exists){
+//----------------------------value existing-----------------------
+                }else {
+                    var cv = ContentValues()
+                    cv.put("question", questionReal)
+                    cv.put("option1", option1Real)
+                    cv.put("option2", option2Real)
+                    cv.put("option3", option3Real)
+                    cv.put("option4", option4Real)
+                    cv.put("answer",answerReal)
+                    db.insert("tblQuestion", null, cv)
+
+                }
+//  -----------------------finish  sqlite store-----------------------------------------------------
+
+            }
+            }
+//        ----------------------- Start logical Question---------------------------------------------------
+        database2.get().addOnSuccessListener {
+            for (DataSnap in it.children ){
+
+//                Log.e("shhhhhhhh", "---------->>$it ", )
+                val questionReal2=DataSnap.child("question").value.toString()
+                val option1Real2=DataSnap.child("option1").value.toString()
+                val option2Real2=DataSnap.child("option2").value.toString()
+                val option3Real2=DataSnap.child("option3").value.toString()
+                val option4Real2=DataSnap.child("option4").value.toString()
+                val answerReal2=DataSnap.child("answer").value.toString().toInt()
+
+
+//                --------------------------logical question---------------------------------------
+
+
+//      store value in sqlite-----------------------------------------------------------------------
+
+                val helper2=SQLiteHelper(applicationContext)
+                val db2=helper2.readableDatabase
+//                Log.e("1234", "=====>$db2", )
+
+                var cursor2=db2.rawQuery("SELECT * FROM logQuestion WHERE question =?", arrayOf(questionReal2.toString()))
+                val exists2=cursor2.moveToNext()
+                cursor2.close()
+
+                if (exists2){
+//----------------------------value existing-----------------------
+                }else {
+                    var cv2 = ContentValues()
+                    cv2.put("question", questionReal2)
+                    cv2.put("option1", option1Real2)
+                    cv2.put("option2", option2Real2)
+                    cv2.put("option3", option3Real2)
+                    cv2.put("option4", option4Real2)
+                    cv2.put("answer",answerReal2)
+                    db2.insert("logQuestion", null, cv2)
+
+                }
+//  -----------------------finish sqlite store-----------------------------------------------------
+            }
+        }
+//        -----------------------finish logical-----------------------------------------------------
+
+//        ------------------------start commonQuestion----------------------------------------------
+        database3.get().addOnSuccessListener {
+            for (DataSnap in it.children ){
+
+//                Log.e("shhhhhhhh", "---------->>$it ", )
+                val questionReal3=DataSnap.child("question").value.toString()
+                val answerReal3=DataSnap.child("answer").value.toString()
+
+
+
+
+//      store value in sqlite-----------------------------------------------------------------------
+
+                val helper3=SQLiteHelper(applicationContext)
+                val db3=helper3.readableDatabase
+//                Log.e("1234", "=====>$db2", )
+
+                var cursor3=db3.rawQuery("SELECT * FROM cmnQuestion WHERE question =?", arrayOf(questionReal3.toString()))
+                val exists3=cursor3.moveToNext()
+                cursor3.close()
+
+                if (exists3){
+//----------------------------value existing-----------------------
+                }else {
+                    var cv3 = ContentValues()
+                    cv3.put("question", questionReal3)
+                    cv3.put("answer",answerReal3)
+                    db3.insert("cmnQuestion", null, cv3)
+
+                }
+//  -----------------------finish sqlite store-----------------------------------------------------
+            }
+        }
+
+//        -------------------------end CommonQuestion-----------------------------------------------
     }
 
     private fun readData(user: String) {
@@ -111,10 +262,9 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         database.child(user).get().addOnSuccessListener {
 
-            Log.e( "readData: ", it.toString())
+//            Log.e( "readData: ", it.toString())
             val firstname=it.child("fname").value
             val Phone=it.child("mobile").value
-
 
 //            Toast.makeText(this,"SuccessFul",Toast.LENGTH_SHORT).show()
 
@@ -131,7 +281,8 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 Toast.makeText(this,"User Doesn't Exists",Toast.LENGTH_SHORT).show()
             }
         }.addOnFailureListener {
-            Toast.makeText(this,"Failed",Toast.LENGTH_SHORT).show()
+            Snackbar.make(binding.root,"Server Down",Snackbar.LENGTH_SHORT).show()
+//            Toast.makeText(this,"Server Down",Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -145,14 +296,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
 
-    private fun replaceFragment(fragment: Fragment)
-    {
-        val fragmentManager: FragmentManager = supportFragmentManager
-        val fragmentTransition: FragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransition.replace(R.id.framelayout, fragment)
-        fragmentTransition.commit()
 
-    }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId)
@@ -217,11 +361,11 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onBackPressed() {
 
-
         builder.setTitle("Interview App")
             .setMessage("Do You Want To Exit ? ")
             .setCancelable(false)
             .setPositiveButton("Yes"){dialogInterface,it ->
+                super@HomeActivity.onBackPressed()
                 finish()
             }
             .setNegativeButton("No"){dialogInterface,it ->
@@ -230,6 +374,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val alertDialog = builder.create()
         // Show the Alert Dialog box
         alertDialog.show()
+
     }
 
     override fun onStart()
