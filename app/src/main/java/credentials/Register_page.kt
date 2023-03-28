@@ -127,7 +127,7 @@ class Register_page : AppCompatActivity() {
 
         if (validname && validmobile && validemail && validpass && validCpass)
         {
-//            firebase value stored code-------------------------------------------------------------
+//            firebase value stored code------------------------------------------------------------
             val FName=binding.fnameEdittxt.text.toString().trim()
             val Mobile=binding.MobileEdittxt.text.toString().trim()
             val Email=binding.EMailEdittxt.text.toString().trim()
@@ -142,18 +142,22 @@ class Register_page : AppCompatActivity() {
                     val User= User(FName,Mobile,Email,Date)
                     if (uid != null) {
                         database.child(uid).setValue(User).addOnSuccessListener {
-
+                            intent= Intent(applicationContext, login::class.java)
+                            startActivity(intent)
                             Toast.makeText(this,"SuccessFully Saved", Toast.LENGTH_SHORT).show()
                         }.addOnFailureListener{
                             Toast.makeText(this,"Failed", Toast.LENGTH_SHORT).show()
                         }
                     }
                 }
+                else
+                {
+                    Toast.makeText(this,"Email Already Exists!!",Toast.LENGTH_SHORT).show()
+                }
             }
 
 
-            intent= Intent(applicationContext, login::class.java)
-            startActivity(intent)
+
 
         }
 

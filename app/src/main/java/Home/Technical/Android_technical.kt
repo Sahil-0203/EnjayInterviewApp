@@ -1,19 +1,33 @@
 package Home.Technical
 
 import AdapterClass.CommomAdapterClass
+import Home.SQLiteHelper
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ModelClass.CommomModelClass
+import android.annotation.SuppressLint
+import android.widget.ImageView
 import com.example.enjayinterviewapp.R
 
 class Android_technical : AppCompatActivity()
 {
+    @SuppressLint("Range", "MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_android_technical)
+
+
+//        ----------------------------Back Button---------------------------------------------------\
+
+        val back_android=findViewById<ImageView>(R.id.back_android)
+        back_android.setOnClickListener {
+            onBackPressed()
+        }
+//        ------------------------------------------------------------------------------------------
+
 
         val recyclerView=findViewById<RecyclerView>(R.id.recyclerview)
 
@@ -21,7 +35,18 @@ class Android_technical : AppCompatActivity()
 
         val data=ArrayList<CommomModelClass>()
 
-        data.add(CommomModelClass("1. What is Android?", R.string.android1))
+        val helper = SQLiteHelper(applicationContext)
+        val db = helper.readableDatabase
+        val query = "SELECT * FROM AndroidQuestion"
+        val cursor1 = db?.rawQuery(query, null)
+
+        while (cursor1?.moveToNext() == true) {
+            val que = cursor1.getString(cursor1.getColumnIndex("question"))
+            val ans = cursor1.getString(cursor1.getColumnIndex("answer"))
+
+
+            data.add(CommomModelClass(que, ans))
+      /*  data.add(CommomModelClass("1. What is Android?", R.string.android1))
         data.add(
             CommomModelClass("2. Official Programming Language used to build Android Application?",
                 R.string.android2
@@ -40,10 +65,11 @@ class Android_technical : AppCompatActivity()
             )
         )
         data.add(CommomModelClass("7. What is intent?", R.string.android7))
-
+*/
 
         var adapter= CommomAdapterClass(data)
 
         recyclerView.adapter=adapter
     }
+}
 }

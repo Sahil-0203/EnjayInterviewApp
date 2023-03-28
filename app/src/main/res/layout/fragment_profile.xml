@@ -283,7 +283,7 @@
             <Button
 
                 android:id="@+id/update"
-                android:layout_width="150dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Update"
                 android:textColor="@color/white"
@@ -292,14 +292,15 @@
                 />
 
             <Button
-                android:layout_width="150dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/DeActivateAccount"
                 android:backgroundTint="#FF0000"
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:layout_alignParentRight="true"
-                android:text="De-Activate" />
+                android:text="De-Activate"
+                tools:ignore="RtlHardcoded" />
 
         </RelativeLayout>
 
@@ -308,8 +309,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:indeterminateDrawable="@drawable/progressbar_bg"
-            />
+            android:indeterminateDrawable="@drawable/progressbar_bg" />
 
     </RelativeLayout>
 

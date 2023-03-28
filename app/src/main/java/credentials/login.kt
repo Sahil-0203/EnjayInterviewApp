@@ -29,6 +29,7 @@ import com.facebook.FacebookCallback
 import com.facebook.FacebookException
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
@@ -159,7 +160,7 @@ class login : AppCompatActivity() {
                     getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 abcd.showSoftInput(pass,InputMethodManager.SHOW_IMPLICIT)
             }
-            else
+            /*else
             {
                 val builder=AlertDialog.Builder(this@login)
 
@@ -176,7 +177,7 @@ class login : AppCompatActivity() {
                     progressBar.visibility = View.GONE
                     Handler().postDelayed({ dialog.dismiss() }, 1000)
                 }, 3000)
-            }
+            }*/
 
             submitForm()
         }
@@ -539,6 +540,7 @@ class login : AppCompatActivity() {
         if (validname && validpassword){
 //            firebase realtime database check value------------------------------------------------
 
+            binding.progressbarlogin.visibility=View.VISIBLE
             val LoginEmail=findViewById<TextInputEditText>(R.id.UserEditText)
             val Loginpassword=findViewById<TextInputEditText>(R.id.passwordEdittxt)
 
@@ -549,9 +551,12 @@ class login : AppCompatActivity() {
 
 
                 if (it.isSuccessful){
+                    binding.progressbarlogin.visibility=View.GONE
                     intent= Intent(applicationContext, HomeActivity::class.java)
                     startActivity(intent)
+                    finish()
                 }else {
+                    binding.progressbarlogin.visibility=View.GONE
                     Toast.makeText(this,"Wrong Password or Email ID", Toast.LENGTH_SHORT).show()
                 }
             }
